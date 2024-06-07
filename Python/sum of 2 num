@@ -1,0 +1,18 @@
+sum of 2 num
+
+num1=5
+num2=10
+sum=num1+num2
+print("Sum:",sum)
+
+sum:15
+
+or 
+
+num1=5
+num2=10
+# sum=num1+num2
+# print("Sum:",sum)
+print (f"Sum: {num1+num2}")
+
+sum=15
