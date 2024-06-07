@@ -1,0 +1,8 @@
+a=100
+b=0.85
+mul=a*b
+print(f"Equivalent amount in EUR:{mul}")
+
+  o/p:
+
+Equivalent amount in EUR:85.0
