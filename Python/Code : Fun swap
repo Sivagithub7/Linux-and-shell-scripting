@@ -12,3 +12,21 @@ o/p:
 give a value:10
 give b value:20
 20 10
+
+or
+
+def swap_num(a,b):
+    b=b+a
+    a=b-a
+    b=b-a
+    print(f"print a value: {a}")
+    print(f"print b value: {b}")
+swap_num(10,20)
+swap_num(30,40)
+
+o/p:
+
+print a value: 20
+print b value: 10
+print a value: 40
+print b value: 30
