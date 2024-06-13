@@ -1,0 +1,14 @@
+a=int(input("give a value:"))
+b=int(input("give b value:"))
+temp=a
+a=b
+b=temp
+def swap_num(a,b):
+    print(a,b)
+swap_num(a,b)
+
+o/p:
+
+give a value:10
+give b value:20
+20 10
