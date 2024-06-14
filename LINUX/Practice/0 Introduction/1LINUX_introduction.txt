@@ -1,0 +1,81 @@
+LINUX
+=======
+
+> Linux is a community of open-source Unix like operating systems that are based on the Linux Kernel.
+> It was initially released by Linus Torvalds on September 17, 1991. It is a free and open-source operating system and the source code can be modified and distributed to anyone commercially or noncommercially under the GNU General Public License. 
+> Linux is open source
+> It is like windows,mac,android,etc.
+> Linux is considered to be more secure than windows as it is less susceptible to viruses and malware.
+> It consists of 3 parts: Kernal, Shell and Programs.
+> An OS is software that enables communication b/w computer hardware and software.
+> Linux kernal is the core part of OS. It establish commuication b/w devices and software.
+. Device management
+. Memory management
+. Process management
+
+>> Applications
+			> shell
+				> kernal
+					> hardware
+Kernal:
+
+process 1      process 2       process 3
+	|				|				|
+	|				|				|
+	|				|				|
+virtual 		virtual 		Virtual machine 3
+machine 1		machine 2
+	|				|				|
+	|				|				|
+	|				|				|
+----------------------------------------
+            Kernal
+			  |
+			  |
+	--------------------
+	    Hardware
+		
+>> Advantages: 
+
+> It is also used to perdorm to run desktop, servers and embedded systems.
+> Pen source: Its source code is easily available.
+> security
+> free
+> stability
+> performance
+> flexibility
+
+>> Disadvantages of Linux:
+
+>It is not very user-friendly. So, it may be confusing for beginners.
+> The commands in UNIX is much more difficult than commands in Windows MS-DOS and macOS
+
+
+> Around 600 + Linux Distributions are available and some of the popular Linux distributions are: 
+
+MX Linux
+Manjaro
+Linux Mint
+elementary
+Ubuntu
+Debian
+Solus
+Fedora
+openSUSE
+Deepin
+
+>> Kernel: Kernel is the core of the Linux based operating system.
+> It virtualizes the common hardware resources of the computer to provide each process with its virtual resources.
+
+>> Shell: 
+> It is a program that takes keyboard and gives OS to perform.
+>It is an interface to the kernel which hides the complexity of the kernel’s functions from the users.
+> It takes commands from the user and executes the kernel’s functions.
+
+>> Terminal:
+> (Tool) we can use to pass shell commands.
+
+>> Why Linux is cheaper than Windows?
+Linux is an open source software and some versions can be downloaded free, 
+whereas Windows is a closed source (premium) software with a paid subscription.
+

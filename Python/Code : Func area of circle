@@ -1,8 +1,0 @@
-a=int(input())
-def area_ofcircle():
-    print(3.14*a*a)
-area_ofcircle()
-
-o/p:
-2
-12.56
