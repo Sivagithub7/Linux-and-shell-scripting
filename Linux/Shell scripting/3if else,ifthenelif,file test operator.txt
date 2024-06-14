@@ -1,0 +1,203 @@
+If:
+
+-eq/=/== : is equal to
+
+-ne/!= : Is not equal to
+
+-gt/> : is greater than
+
+-ge/>= : is greater than or equal to
+
+-lt/< : less than
+
+-le/<= : less than or equal to
+
+ex:
+
+#! /bin/bash
+
+count=10
+
+if [ $count -gt 9 ]
+then
+        echo "is true"
+fi
+
+o/p:
+root@Varma:~/a# vi read
+root@Varma:~/a# ./read
+is true
+
+ex:
+
+#! /bin/bash
+
+count=10
+
+if [ $count -lt 9 ]
+then
+        echo "is true"
+else
+        echo "is false"
+fi
+~  
+
+o/p:
+root@Varma:~/a# ./read
+is false
+
+ex:
+elif:
+
+#! /bin/bash
+
+count=10
+
+if [ $count -lt 10 ]
+then
+       echo "is trueans"
+elif [ $count == 10  ]
+then
+        echo "is true"
+else
+        echo "is false"
+fi
+
+o/p:
+root@Varma:~/a# vi read
+root@Varma:~/a# ./read
+is true
+
+========================================================
+File test operators:
+
+#! /bin/bash
+
+echo -e "enter the name of the file : \c"
+read file_name
+
+if [ -e $file_name ]
+then
+        echo "$file_name found"
+else
+        echo "$file_name not found"
+fi
+
+note : -e flag is to giv value in \c.
+	   -f flag ells if file exists or regular file
+	   -d directory or not
+	   -s any info inside file is there  or not
+	   
+o/p 1:
+
+root@Varma:~/a# ./read
+enter the name of the file : cccc
+cccc not found
+
+o/p 2:
+
+we can create file cccc and check it 
+
+root@Varma:~/a# touch cccc
+root@Varma:~/a# vi read
+root@Varma:~/a# ./read
+enter the name of the file : cccc
+cccc found
+
+======================================
+**************
+#!/bin/bash
+count=100
+if [ $count -eq 100 ]
+then
+ echo Count is 100
+else
+ echo Count is not 100
+fi
+
+o/p
+/shell$ ./thirdif
+Count is 100
+
+----------------
+#!/bin/bash
+a=`date | awk '{print $1}'`
+if [ "$a" == Mon ]
+ then
+ echo Today is $a
+ else
+ echo Today is not Monday
+fi
+
+o/p
+
+Today is not Monday
+------------------------
+#!/bin/bash
+clear
+if [ -e /home/iafzal/error.txt ]
+ then
+ echo "File exist"
+ else
+ echo "File does not exist"
+fi
+
+o/p:
+file exists
+---------------------------
+#!/bin/bash
+clear
+echo
+echo "What is your name?"
+echo
+read a
+echo
+echo Hello $a sir
+echo
+echo "Do you like working in IT? (y/n)"
+read Like
+echo
+if [ "$Like" == y ]
+then
+echo You are cool
+elif [ "$Like" == n ]
+then
+echo You should try IT, it’s a good field
+echo
+fi
+
+
+o/p:
+
+what is your name
+
+nikil
+
+Hello nikil sir
+
+do you like it job? (y/n)
+n
+
+you should try it is great opportunity
+-------------------------
+Other If statements
+If the output is either Monday or Tuesday
+if [ “$a” = Monday ] || [ “$a” = Tuesday ]
+Test if the error.txt file exist and its size is greater than zero
+if test -s error.txt
+if [ $? -eq 0 ]			 	If input is equal to zero (0)
+if [ -e /export/home/filename ] 	If file is there
+if [ "$a" != "" ] 			If variable does not match
+if [ error_code != "0" ]		If file not equal to zero (0)
+
+
+Comparisons:
+-eq equal to for numbers
+== equal to for letters
+-ne not equal to
+!== not equal to for letters
+-lt less than
+-le less than or equal to
+-gt greater than
+-ge greater than or equal to
+
