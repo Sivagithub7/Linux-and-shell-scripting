@@ -1,0 +1,861 @@
+COMMANDS
+========
+
+1) PWD : present working directory.
+> svadlamuri@Varma:~$ pwd
+/home/svadlamuri
+
+2)Cd : Change directory.
+> cd <filename>
+( cd .. --> one step back)
+ 
+3) cat: Create new file and write the content and ctrl+d to save the content into file.
+note: id file is present after we do cat file then it will over ride.
+
+> svadlamuri@Varma:~$ cat > file1
+ravi
+suresh
+
+> svadlamuri@Varma:~$ cat file1
+ravi
+suresh
+
+>overridden happens :
+-------------------
+> svadlamuri@Varma:~$ cat >file1
+bob
+smith
+
+> svadlamuri@Varma:~$ cat file1
+bob
+smith
+
+>svadlamuri@Varma:~$ cat >file2
+welcome
+
+> svadlamuri@Varma:~$ ls file2
+file2
+
+> svadlamuri@Varma:~$ cat file2
+welcome
+
+> svadlamuri@Varma:~$ cat >>file2
+hello
+
+> svadlamuri@Varma:~$ cat file2
+welcome
+hello
+
+> svadlamuri@Varma:~$ cat -n file2
+     1  welcome
+     2  hello
+	 
+> concatination:
+svadlamuri@Varma:~$ cat file2 file1>f
+svadlamuri@Varma:~$ cat f
+welcome
+hello
+ravi
+suresh
+
+> Merge:
+svadlamuri@Varma:~$ cat file1 file2>file merge
+svadlamuri@Varma:~$ cat file
+ravi
+suresh
+welcome
+hello
+
+4) ls: List the content of directory.
+> svadlamuri@Varma:~$ ls -lrt
+total 16
+-rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 17 10:56 file1
+-rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file2
+
+> svadlamuri@Varma:~$ ls
+f  file  file1  file2
+
+> svadlamuri@Varma:~$ ls /
+bin   etc   lib    libx32      mnt   root  snap  tmp
+boot  home  lib32  lost+found  opt   run   srv   usr
+dev   init  lib64  media       proc  sbin  sys   var
+
+> svadlamuri@Varma:~$ ls ../..
+bin   etc   lib    libx32      mnt   root  snap  tmp
+boot  home  lib32  lost+found  opt   run   srv   usr
+dev   init  lib64  media       proc  sbin  sys   var
+
+> svadlamuri@Varma:~$ ls -l (long lists and files)
+total 16
+-rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 17 10:56 file1
+-rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file2
+
+> svadlamuri@Varma:~$ ls -a (hidden lists)
+.   .bash_logout  .cache    .motd_shown  f     file1
+..  .bashrc       .lesshst  .profile     file  file2
+
+> svadlamuri@Varma:~$ ls -al (long list)
+total 44
+drwxr-x--- 3 svadlamuri svadlamuri 4096 Jul 17 11:27 .
+drwxr-xr-x 3 root       root       4096 Jul 16 20:05 ..
+-rw-r--r-- 1 svadlamuri svadlamuri  220 Jul 16 20:05 .bash_logout
+-rw-r--r-- 1 svadlamuri svadlamuri 3771 Jul 16 20:05 .bashrc
+drwx------ 2 svadlamuri svadlamuri 4096 Jul 16 20:06 .cache
+-rw------- 1 svadlamuri svadlamuri   20 Jul 17 10:30 .lesshst
+-rw-r--r-- 1 svadlamuri svadlamuri    0 Jul 16 20:06 .motd_shown
+-rw-r--r-- 1 svadlamuri svadlamuri  807 Jul 16 20:05 .profile
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   12 Jul 17 10:56 file1
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+
+ls -l -->shows metadata 
+system@Varma:~/f1$ ls -l
+total 0
+-rw-r--r-- 1 system system 0 Aug 26 12:22 file1
+
+ls -l -a -->shows all metadatasystem@Varma:~/f1$ ls -l -a
+total 8
+drwxr-xr-x 2 system system 4096 Aug 26 12:22 .
+drwxr-x--- 6 system system 4096 Aug 26 12:21 ..
+-rw-r--r-- 1 system system    0 Aug 26 12:22 file1
+
+5) MKDIR: Create new directory with given name
+> showed in blue colour.
+
+> svadlamuri@Varma:~$ mkdir d
+svadlamuri@Varma:~$ ls -lrt
+total 20
+-rw-r--r-- 1 svadlamuri svadlamuri   12 Jul 17 10:56 file1
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+drwxr-xr-x 2 svadlamuri svadlamuri 4096 Jul 17 11:38 d
+
+> svadlamuri@Varma:~$ mkdir images
+svadlamuri@Varma:~$ ls -lrt
+total 24
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+drwxr-xr-x 2 svadlamuri svadlamuri 4096 Jul 17 11:38 d
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 2 svadlamuri svadlamuri 4096 Jul 17 11:50 images
+
+> svadlamuri@Varma:~$ mkdir images/pics
+svadlamuri@Varma:~$ cd images
+svadlamuri@Varma:~/images$ ls -lrt
+total 4
+drwxr-xr-x 2 svadlamuri svadlamuri 4096 Jul 17 11:51 pics
+
+> svadlamuri@Varma:~/images$ cd ..
+svadlamuri@Varma:~$ mkdir -p names/{marley,hasan,visa} (here -p is parent)
+svadlamuri@Varma:~$ cd names
+svadlamuri@Varma:~/names$ ls -lrt
+total 12
+drwxr-xr-x 2 svadlamuri svadlamuri 4096 Jul 17 11:53 marley
+drwxr-xr-x 2 svadlamuri svadlamuri 4096 Jul 17 11:53 hasan
+drwxr-xr-x 2 svadlamuri svadlamuri 4096 Jul 17 11:53 visa
+
+6) MKDIR : remove specified directory and it must should be empty.
+
+> svadlamuri@Varma:~$ rmdir d
+svadlamuri@Varma:~$ ls -lrt
+total 24
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+
+> svadlamuri@Varma:~$ mkdir -p d/man
+svadlamuri@Varma:~$ ls -lrt
+total 28
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 12:04 d
+svadlamuri@Varma:~$ cd d
+svadlamuri@Varma:~/d$ ls -lrt
+total 4
+drwxr-xr-x 2 svadlamuri svadlamuri 4096 Jul 17 12:04 man
+svadlamuri@Varma:~/d$ cd ..
+svadlamuri@Varma:~$ rmdir d
+rmdir: failed to remove 'd': Directory not empty
+svadlamuri@Varma:~$ cd d
+svadlamuri@Varma:~/d$ rmdir man
+svadlamuri@Varma:~/d$ ls -lrt
+total 0
+svadlamuri@Varma:~/d$ cd ..
+svadlamuri@Varma:~$ rmdir d
+svadlamuri@Varma:~$ ls -lrt
+total 24
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+
+> svadlamuri@Varma:~$ ls -lrt
+total 28
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 12:07 a
+
+svadlamuri@Varma:~$ rmdir -pv a/b/c/d
+rmdir: removing directory, 'a/b/c/d'
+rmdir: removing directory, 'a/b/c'
+rmdir: removing directory, 'a/b'
+rmdir: removing directory, 'a'
+
+7) Rm: remove file
+
+> svadlamuri@Varma:~$ cat >ff
+er
+svadlamuri@Varma:~$ rm ff
+svadlamuri@Varma:~$ ls -lrt
+total 24
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+
+8) Cp: copy file or directory
+>svadlamuri@Varma:~$ cp f ff
+svadlamuri@Varma:~$ ls -lrt
+total 28
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 12:15 ff
+
+svadlamuri@Varma:~$ cat ff
+welcome
+hello
+ravi
+suresh
+
+9) Mv: Move file or directory.
+> svadlamuri@Varma:~$ cat f
+welcome
+hello
+ravi
+suresh
+
+svadlamuri@Varma:~$ cat >ff
+ex
+
+svadlamuri@Varma:~$ cat ff
+ex
+
+svadlamuri@Varma:~$ mv f ff
+svadlamuri@Varma:~$ cat ff
+welcome
+hello
+ravi
+suresh
+
+svadlamuri@Varma:~$ cat f
+cat: f: No such file or directory
+
+svadlamuri@Varma:~$ ls
+ff  file  file1  file2  images  names
+
+svadlamuri@Varma:~$ mv ff f
+svadlamuri@Varma:~$ cat f
+welcome
+hello
+ravi
+suresh
+
+svadlamuri@Varma:~$ cat ff
+cat: ff: No such file or directory
+
+10) Cp: copy
+svadlamuri@Varma:~$ ls -lrt
+total 24
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+svadlamuri@Varma:~$ cp f ff
+svadlamuri@Varma:~$ cat ff
+welcome
+hello
+ravi
+suresh
+
+11) Mv: move file or directory.
+
+ svadlamuri@Varma:~$ ls -lrt
+total 24
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+-rw-r--r-- 1 svadlamuri svadlamuri    0 Jul 20 12:39 f1
+svadlamuri@Varma:~$ mv f f2
+svadlamuri@Varma:~$ ls -lrt
+total 24
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f2
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+-rw-r--r-- 1 svadlamuri svadlamuri    0 Jul 20 12:39 f1
+svadlamuri@Varma:~$ mv f2 f1
+svadlamuri@Varma:~$ ls -ler
+ls: invalid option -- 'e'
+Try 'ls --help' for more information.
+svadlamuri@Varma:~$ ls -ltr
+total 24
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f1
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+svadlamuri@Varma:~$ cat f1
+welcome
+hello
+ravi
+suresh
+
+12) less: Is used to see big text files and it have some extra features such as(adjustment in width and height).
+It is similar to more command.
+svadlamuri@Varma:~$less bigfile
+
+>up arrow and down arrow should be use 
+>space key is used to navigate page by page
+> SHIFT + G -- GOES END OF THE page
+>1 +G --GOES TO STARTING page
+> /marked --search purpose(/)
+>q--quit
+
+13) Touch: Create empty files and change time stamp of created file.
+note: if file already exists then we create any file with that existing file name Touch can not over ride  it updates time stamp of file 
+
+svadlamuri@Varma:~$ mkdir desktop
+svadlamuri@Varma:~$ ls
+bigfile  desktop  f1  file  file1  file2  images  names
+svadlamuri@Varma:~$ cd desktop
+svadlamuri@Varma:~/desktop$ touch file1.txt
+svadlamuri@Varma:~/desktop$ cat >file2.txt
+Balu
+Ramesh
+svadlamuri@Varma:~/desktop$ ls
+file1.txt  file2.txt
+svadlamuri@Varma:~/desktop$ ls -lrt
+total 4
+-rw-r--r-- 1 svadlamuri svadlamuri  0 Jul 21 10:17 file1.txt
+-rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 21 10:17 file2.txt
+
+change time stamp on file1.txt:
+
+svadlamuri@Varma:~/desktop$ touch file1.txt
+svadlamuri@Varma:~/desktop$ ls -lrt
+total 4
+-rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 21 10:17 file2.txt
+-rw-r--r-- 1 svadlamuri svadlamuri  0 Jul 21 10:19 file1.txt
+
+Create more files :
+
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ touch abc{1..5}.xml
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -lrt
+total 0
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 21 11:51 f1
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:24 free
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc1.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc2.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc3.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc4.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc5.xml
+
+14) Nano: 
+
+svadlamuri@Varma:~/desktop$ nano file1.txt
+svadlamuri@Varma:~/desktop$ cat file1.txt
+abc
+bcd
+efg
+
+
+                        [ Wrote 4 lines ]
+^G Help      ^O Write Out ^W Where Is  ^K Cut       ^T Execute
+^X Exit      ^R Read File ^\ Replace   ^U Paste     ^J Justify
+
+
+
+> svadlamuri@Varma:~/desktop$ nano abc.cpp ( it identified the c++ extension and others ass well)
+
+ GNU nano 6.2                 abc.cpp *              
+  #include<iostream>
+  
+  
+^G Help      ^O Write Out ^W Where Is  ^K Cut       ^T Execute
+^X Exit      ^R Read File ^\ Replace   ^U Paste     ^J Justify
+
+to save : ctrl+0 to check file name is ok or rename and ctrl+z
+
+15) Sudo:command is used to administation access to another user 
+
+svadlamuri@Varma:~/desktop$ mkdir newdir
+svadlamuri@Varma:~/desktop$ ls
+abc.cpp  file1.txt  file2.txt  newdir
+svadlamuri@Varma:~/desktop$ rmdir newdir
+svadlamuri@Varma:~/desktop$
+svadlamuri@Varma:~/desktop$ ls
+abc.cpp  file1.txt  file2.txt
+svadlamuri@Varma:~/desktop$ cd ..
+svadlamuri@Varma:~$ rmdir newdir
+rmdir: failed to remove 'newdir': No such file or directory
+svadlamuri@Varma:~$ mkdir newdir
+svadlamuri@Varma:~$ ls
+bigfile  desktop  f1  file  file1  file2  images  names  newdir
+svadlamuri@Varma:~$ sudo newdir
+[sudo] password for svadlamuri:
+sudo: newdir: command not found
+svadlamuri@Varma:~$ mkdir newdir
+mkdir: cannot create directory ‘newdir’: File exists
+svadlamuri@Varma:~$ sudo -s
+root@Varma:/home/svadlamuri# exit
+exit
+
+If we want to download any thing.
+root@Varma:/home/svadlamuri# sudo apt-get install <command to download>
+
+16) Top: View active process live with their system usage.
+
+- It will change every 3 sec
+- Press S , it will set refresh number.
+- Filter idle process press(i).
+- Quit press q.
+
+17) Kill: Kill active process ID or name.
+svadlamuri@Varma:~$ ps -aux  -- it show all the processers
+
+svadlamuri@Varma:~$ kill 3467
+
+process running:
+svadlamuri@Varma:~$ ps -ux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+svadlam+     329  0.0  0.1   6172  5084 pts/0    Ss   09:50   0:00 -bash
+svadlam+     420  0.0  0.2  16908  9104 ?        Ss   09:50   0:00 /lib/systemd/systemd --user
+svadlam+     421  0.0  0.0 168788  3392 ?        S    09:50   0:00 (sd-pam)
+svadlam+     433  0.0  0.1   6120  4892 pts/1    S+   09:50   0:00 -bash
+svadlam+     852  0.0  0.0   7748  3540 pts/0    R+   10:12   0:00 ps -ux
+
+18) ECHO: Print any text follows the command /string that is passed an argument.
+svadlamuri@Varma:~$ echo helo world
+helo world
+
+svadlamuri@Varma:~$ echo "hello world"
+hello world
+
+svadlamuri@Varma:~$ myvar="mark"
+svadlamuri@Varma:~$ echo $myvar
+mark
+
+svadlamuri@Varma:~$ x=10
+svadlamuri@Varma:~$ echo "the value of x is $x"
+the value of x is 10
+
+svadlamuri@Varma:~$ echo -e 'some \text'
+some    ext
+
+svadlamuri@Varma:~$ echo -e 'some \n text'
+some
+ text
+ 
+svadlamuri@Varma:~$ echo -e 'some \ntext'
+some
+text
+
+19) Chmod: (file permissions,symbolic permissions)
+- Chmod(change mod) is change the user/group permission to access file.
+
+svadlamuri@Varma:~$ ls -l
+total 48
+-rw-r--r-- 1 svadlamuri svadlamuri 14210 Jul 20 12:51 bigfile
+drwxr-xr-x 2 svadlamuri svadlamuri  4096 Jul 21 10:45 desktop
+-rw-r--r-- 1 svadlamuri svadlamuri    27 Jul 17 11:26 f1
+-rw-r--r-- 1 svadlamuri svadlamuri    27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri    10 Jul 17 11:40 file1
+-rw-r--r-- 1 svadlamuri svadlamuri    27 Jul 17 11:27 file2
+drwxr-xr-x 3 svadlamuri svadlamuri  4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri  4096 Jul 17 12:02 names
+drwxr-xr-x 2 svadlamuri svadlamuri  4096 Jul 21 10:46 newdir
+
+rrw - rw --x
+
+rrw (owner or user)
+rw (group)
+x(others)
+
+note: 
+r -- Read
+w --write
+x -- execute
+
+svadlamuri@Varma:~$ ls -l file
+-rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+
+if we want to add or remove permissions:
+svadlamuri@Varma:~$ chmod o+w file -(here o=others ,+ add, w=write permission)
+svadlamuri@Varma:~$ ls -l file
+-rw-r--rw- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+
+svadlamuri@Varma:~$ chmod o-w file
+svadlamuri@Varma:~$ ls -l file
+-rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+
+svadlamuri@Varma:~$ chmod ug=wrx file (here u=user or owner)
+svadlamuri@Varma:~$ ls -l file
+-rwxrwxr-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+
+svadlamuri@Varma:~$ chmod a-rwx file
+svadlamuri@Varma:~$ ls -l file
+---------- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+
+svadlamuri@Varma:~$ chmod ugo=rw file
+svadlamuri@Varma:~$ ls -l
+-rw-rw-rw- 1 svadlamuri svadlamuri    27 Jul 17 11:27 file
+
+> r,w,x permissions  	binary		octal
+
+---						000			0
+--x						001			1
+-w-						010			2
+-wx						011			3
+r--						100			4
+r-x						101			5
+rw-						110			6
+rwx						111			7
+
+svadlamuri@Varma:~$ ls -l file
+-rw-rw-rw- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+svadlamuri@Varma:~$ chmod 001 file
+svadlamuri@Varma:~$ ls -l file
+---------x 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+svadlamuri@Varma:~$ chmod u+110 file
+chmod: invalid mode: ‘u+110’
+Try 'chmod --help' for more information.
+svadlamuri@Varma:~$ chmod 111 file
+svadlamuri@Varma:~$ ls -l file
+---x--x--x 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+svadlamuri@Varma:~$ chmod 5 file
+svadlamuri@Varma:~$ ls -l file
+-------r-x 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+
+svadlamuri@Varma:~$ chmod 755 file
+svadlamuri@Varma:~$ ls -l file
+-rwxr-xr-x 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+svadlamuri@Varma:~$ chmod 766 file
+svadlamuri@Varma:~$ ls -l file
+-rwxrw-rw- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
+svadlamuri@Varma:~$
+
+20) CLEAR : CLEAR ALL THE WHAT WE WROTE UPTO NOW .
+
+21) help commands:
+whatis cmd
+cmd --help
+man cmd
+
+22) i/p and o/p redirects(>,>>,<,stdin,stdout and stderr)
+
+There are 3 redirects in Linux
+1. Standard input (stdin) and it has file descriptor number as 0
+2. Standard output (stdout) and it has file descriptor number as 1
+3. Standard error (stderr) and it has file descriptor number as 2
+• Output (stdout) - 1
+• By default when running a command its output goes to the terminal
+• The output of a command can be routed to a file using > symbol
+• E.g.
+> STDUOUT:(-1)
+
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l
+total 0
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc1.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc2.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc3.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc4.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc5.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 21 11:51 f1
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:24 free
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l>mydir
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat mydir
+total 0
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc1.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc2.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc3.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc4.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc5.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 21 11:51 f1
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:24 free
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 24 10:44 mydir
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l
+total 0
+-rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc1.xml
+-rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc2.xml
+-rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc3.xml
+-rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc4.xml
+-rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc5.xml
+-rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 21 11:51 f1
+-rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:24 free
+-rw-r--r-- 1 svadlamuri svadlamuri 467 Oct 24 10:44 mydir
+
+ex:
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat > f2
+hello
+^C
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "world" >> f2
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat f2
+hello
+world
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat "person" >> f2
+cat: person: No such file or directory
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat "f2" >> person
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat f2
+hello
+world
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "person" >> f2
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat f2
+hello
+world
+person
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "men" > f2
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat f2
+men
+
+> stdin:(-0)
+
+ex: 
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat < f2
+men
+
+> stderr:(2>)
+
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l /root
+ls: cannot open directory '/root': Permission denied
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l /root 2> errorfile
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ telnet localhost
+Trying 127.0.0.1...
+telnet: Unable to connect to remote host: Connection refused
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ telnet localhost 2> errorfile
+Trying 127.0.0.1...
+
+note: error goes to
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat errorfile
+telnet: Unable to connect to remote host: Connection refused
+
+1) tee:
+• “tee” command is used to store and view (both at the same
+time) the output of any command
+
+*refer pdf for  more info
+
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat > david
+hello
+^C
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat david
+hello
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "world" > david
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat david
+world
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "hello" >> david
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat david
+world
+hello
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "hello" | tee david
+hello
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ rm david
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls
+abc1.xml  abc2.xml  abc3.xml  abc4.xml  abc5.xml  errorfile  f1  f2  f5  free  man  mydir  person
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "hello" | tee david
+hello
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "wel" | tee -a david
+wel
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat david
+hello
+wel
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls
+abc1.xml  abc2.xml  abc3.xml  abc4.xml  abc5.xml  david  errorfile  f1  f2  f5  free  man  mydir  person
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$
+
+2) AWK: filter cmd
+• awk is a utility/language designed for data extraction. Most of the time it is used to extract fields from a
+file or from an output
+
+* refer pdf
+
+ex:
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat > test
+vai bye
+chai swai
+mai kai
+sai tai
+^C
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ awk '{print $1}' test
+vai
+chai
+mai
+sai
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ awk '{print $2}' test
+bye
+swai
+kai
+tai
+
+3) truncate:
+• The Linux truncate command is often
+used to shrink or extend the size of a file to
+the specified size
+• Command is
+   truncate –s 10 filename
+
+ex: decrease the size
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ touch tom
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo saaho vaibhav kalyan sameer vijay tarun > tom
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l tpom
+ls: cannot access 'tpom': No such file or directory
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l tom
+-rw-r--r-- 1 svadlamuri svadlamuri 40 Oct 24 14:53 tom
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ truncate -s 30 tom
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l tom
+-rw-r--r-- 1 svadlamuri svadlamuri 30 Oct 24 14:54 tom
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$
+
+note: see before size is 40 then after truncate size is 30.
+
+>increase the size:
+
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ truncate -s 50 tom
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l tom
+-rw-r--r-- 1 svadlamuri svadlamuri 50 Oct 24 14:57 tom
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat tom
+saaho vaibhav kalyan sameer visvadlamuri@LAPTOP-1BR3SJJG:~/file1$
+
+4) Combining and splitting lines:
+
+ex:
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat > david
+tom
+cat
+hai
+bye
+tic
+for
+tat
+^C
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat david | wc -l
+7
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ split -l 2 david sep
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls
+abc1.xml  abc3.xml  abc5.xml  errorfile  f2  free  mydir   sam    sepab  sepad  tom
+abc2.xml  abc4.xml  david     f1         f5  man   person  sepaa  sepac  test
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sepaa
+tom
+cat
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sepab
+hai
+bye
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sepac
+tic
+for
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sepad
+tat
+
+4)What is the purpose of sort command?
+
+It short the o/p of cmd amd file.
+
+5)sed:refer pdf
+note if we dont use -i then it will disply the o/p in screen but actual o/p cant change.
+ex:
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat ss
+kenny val
+benny vall
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ sed -i 's/kenny/lenny/g' ss
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat ss
+lenny val
+benny vall
+
+note: -i = insert
+g= global
+s= substitute
+
+>completely remove then we use 
+
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball doll
+cat bat
+toy boy
+toll doll
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ sed -i 's/doll//g' sss
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball
+cat bat
+toy boy
+toll
+
+to delete lines:
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball
+cat bat
+toy boy
+toll
+call bat
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ sed -i '/bat/d' sss
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball
+toy boy
+toll.
+
+4) who: 
+svadlamuri@LAPTOP-1BR3SJJG:~$ whatis who
+who (1)              - show who is logged on
+
+5) Last:
+svadlamuri@LAPTOP-1BR3SJJG:~$ whatis last
+last (1)             - show a listing of last logged in users
+
+> last | awk '{print$1}' | sort | uniq
+uniq: same name who is present
+
+6) w:
+svadlamuri@LAPTOP-1BR3SJJG:~$ whatis w
+w (1)                - Show who is logged on and what they are doing.
+
+7)id: 
+svadlamuri@LAPTOP-1BR3SJJG:~$ whatis id
+id (1)               - print real and effective user and group IDs
+
+ex:
+
+svadlamuri@LAPTOP-1BR3SJJG:~$ id
+uid=1000(svadlamuri) gid=1000(svadlamuri) groups=1000(svadlamuri),4(adm),20(dialout),24(cdrom),25(floppy),
+27(sudo),29(audio),30(dip),44(video),46(plugdev),116(netdev)

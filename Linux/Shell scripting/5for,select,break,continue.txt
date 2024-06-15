@@ -1,0 +1,145 @@
+For loop:
+
+
+for i in {0..10}
+do
+        echo $i
+done
+~     
+
+o/p:
+
+root@Varma:~/a# ./read
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+ex:
+
+for i in {0..10..2}
+do
+        echo $i
+done
+~     
+
+o/p:
+2
+4
+6
+8
+10
+
+ex:
+
+#! /bin/bash
+
+echo ${BASH_VERSION}
+for (( i=0; i<5; i++ ))
+do
+        echo $i
+done
+
+o/p:
+
+root@Varma:~/a# ./read
+5.1.16(1)-release
+0
+1
+2
+3
+4
+===========================================================
+Select:
+
+#! /bin/bash
+
+select name in mark john tom ben
+do
+        case $name in
+        mark)
+                echo mark selected
+                ;;
+        john)
+                echo john selected
+                ;;
+        tom)
+                echo tom selected
+                ;;
+        ben)
+                echo ben selected
+                ;;
+        *)
+                echo "error please mention no 1..4"
+        esac
+
+done
+
+o/p:
+
+root@Varma:~/a# vi read
+root@Varma:~/a# ./read
+1) mark
+2) john
+3) tom
+4) ben
+#? 2
+john selected
+#? 5
+error please mention no 1..4
+#?
+
+^c  -- to get  out
+=================================================
+Break:
+
+#! /bin/bash
+
+for (( i=1 ; i<=10 ; i++ ))
+do
+        if [ $i -gt 5 ]
+        then
+          break
+        fi
+        echo "$i"
+done
+
+o/p:
+root@Varma:~/a# ./read
+1
+2
+3
+4
+5
+
+Continue:
+
+#! /bin/bash
+
+for (( i=1 ; i<=10 ; i++ ))
+do
+        if [ $i -eq 3 -o $i -eq 6 ]
+        then
+          continue
+        fi
+        echo "$i"
+done
+
+o/p:
+
+root@Varma:~/a# ./read
+1
+2
+4
+5
+7
+8
+9
+10

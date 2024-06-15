@@ -1,0 +1,573 @@
+> Uptime: Tell how long the system has been running.
+root@Varma:~# uptime
+ 09:34:30 up 0 min,  1 user,  load average: 1.56, 0.43, 0.15
+
+> Uname: - print system information
+root@Varma:~# uname
+Linux
+root@Varma:~# uname -a
+Linux Varma 5.15.90.1-microsoft-standard-WSL2 #1 SMP Fri Jan 27 02:56:13 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+> Bc: An arbitrary precision calculator language
+
+root@Varma:~# bc
+bc 1.07.1
+Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006, 2008, 2012-2017 Free Software Foundation, Inc.
+This is free software with ABSOLUTELY NO WARRANTY.
+For details type `warranty'.
+2+2
+4
+^C
+(interrupt) use quit to exit.
+quit
+root@Varma:
+
+> Processers:
+Processesses and jobs:
+
+- application=service
+- Script
+- process
+- Daemon 
+- Threads
+- Job
+
+=> service-- process1
+	     process2 ... (multiple process)
+=> service-- process1-- thread1
+			thread2.........
+
+Process/service commands:
+
+- systemctl or service
+- ps
+- top
+- kill
+- crontab
+- at.
+
+> Systemctl cmd:
+-systemctl cmd is a new tool to control system services
+-It is available in version 7 and later it replaces the service command
+
+-usage examples:
+systemctl start |stop | status servicename.service  (firewalld)
+systemctl enable servicename.service
+systemctl restart|reload servicename.service
+systemctl1 list-units --all
+
+the o/p has the following columns:
+-units
+-load
+-active
+-sub
+-description
+
+- To add a service under systemctl management:
+  Create a unit file in /etc/systemd/system/servicename.service
+  
+- To control system with systemctl
+	systemctl poweroff
+	systemctl halt
+	system reboot
+
+===========================
+Ps:mnd stands for process status and it displays all the currently running processess in the linux system
+Usage ex:
+-ps = shows the processes of the current shell
+
+root@Varma:~# ps
+    PID TTY          TIME CMD
+    309 pts/0    00:00:00 bash
+    479 pts/0    00:00:00 ps
+	
+ pid= the unique process ID
+ tty= terminal type that the user logged in to
+ time= account of cpu in min and sec tht the process has been runnig 
+ CMD: name of the cmd
+ 
+ root@Varma:~# ps -e --shows all running processes
+    PID TTY          TIME CMD
+      1 ?        00:00:00 systemd
+      2 ?        00:00:00 init-systemd(Ub
+      5 ?        00:00:00 init
+     64 ?        00:00:00 systemd-journal
+     94 ?        00:00:00 systemd-udevd
+    107 ?        00:00:00 snapfuse
+    111 ?        00:00:00 snapfuse
+    112 ?        00:00:00 snapfuse
+    113 ?        00:00:00 snapfuse
+    117 ?        00:00:00 snapfuse
+    152 ?        00:00:00 snapfuse
+    153 ?        00:00:01 snapfuse
+    154 ?        00:00:02 snapfuse
+ 
+ root@Varma:~# ps aux --- shows all running processes in BSD format
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.1  0.2 165960 11308 ?        Ss   09:39   0:00 /sbin/init
+root           2  0.0  0.0   2324  1256 ?        Sl   09:39   0:00 /init
+root           5  0.0  0.0   2352    80 ?        Sl   09:39   0:00 plan9 --control-socket 6 --log-level 4 --server-fd 7
+root          64  0.0  0.3  31336 12436 ?        S<s  09:39   0:00 /lib/systemd/systemd-journald
+root          94  0.0  0.1  22208  5952 ?        Ss   09:39   0:00 /lib/systemd/systemd-udevd
+root         107  0.0  0.0   4496   172 ?        Ss   09:39   0:00 snapfuse /var/lib/snap
+
+root@Varma:~# ps -ef -- shows all running processes in full format listing
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 09:39 ?        00:00:00 /sbin/init
+root           2       1  0 09:39 ?        00:00:00 /init
+root           5       2  0 09:39 ?        00:00:00 plan9 --control-socket 6 --log-level 4 --server-fd 7 --pipe-fd 9 --l
+root          64       1  0 09:39 ?        00:00:00 /lib/systemd/systemd-journald
+root          94       1  0 09:39 ?        00:00:00 /lib/systemd/systemd-udevd
+
+ps -u username -- shows all processes by username
+
+================================
+Top: is used to show the linux process and it provides a real time view of the running system
+note: it refreshes every 3 sec
+root@Varma:~# top
+top - 09:51:28 up 11 min,  1 user,  load average: 0.00, 0.02, 0.02
+Tasks:  32 total,   1 running,  31 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.1 us,  0.1 sy,  0.0 ni, 97.1 id,  2.7 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   3802.8 total,   2954.4 free,    456.6 used,    391.8 buff/cache
+MiB Swap:   1024.0 total,   1024.0 free,      0.0 used.   3133.6 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 root      20   0  165960  11308   8268 S   0.0   0.3   0:00.36 systemd
+      2 root      20   0    2324   1256   1148 S   0.0   0.0   0:00.01 init-systemd(Ub
+      5 root      20   0    2352     80     68 S   0.0   0.0   0:00.00 init
+     64 root      19  -1   31336  12452  11452 S   0.0   0.3   0:00.08 systemd-journal
+     94 root      20   0   22208   5952   4260 S   0.0   0.2   0:00.11 systemd-udevd
+    107 root      20   0    4496    172     28 S   0.0   0.0   0:00.00 snapfuse
+
+- top -u username== shows tasks/process by user owned
+- top then press c==shows commands absolute path
+
+root@Varma:~# top
+top - 09:54:25 up 14 min,  1 user,  load average: 0.07, 0.02, 0.01
+Tasks:  32 total,   1 running,  31 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.0 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   3802.8 total,   2951.1 free,    459.8 used,    391.8 buff/cache
+MiB Swap:   1024.0 total,   1024.0 free,      0.0 used.   3130.3 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 root      20   0  165960  11308   8268 S   0.0   0.3   0:00.36 /sbin/init
+      2 root      20   0    2324   1256   1148 S   0.0   0.0   0:00.01 /init
+      5 root      20   0    2352     80     68 S   0.0   0.0   0:00.00 plan9 --control-socket 6 --log-level 4 --server+
+     64 root      19  -1   31336  12452  11452 S   0.0   0.3   0:00.08 /lib/systemd/systemd-journald
+     94 root      20   0   22208   5952   4260 S   0.0   0.2   0:00.11 /lib/systemd/systemd-udevd
+    107 root      20   0    4496    172     28 S   0.0   0.0   0:00.00 snapfuse /var/lib/snapd/snaps/bare_5.snap /snap+
+    111 root      20   0    4852   1704   1228 S   0.0   0.0   0:00.92 snapfuse /var/lib/snapd/snaps/core22_864.snap /+
+    112 root      20   0    4496    160     16 S   0.0   0.0   0:00.00 snapfuse /var/lib/sna
+
+- top then press k= kill a process by PID within top session.
+
+- top then M and P = to sort all linux running processes by memory usage
+
+=======================
+Kill--cmd is used to terminate proceses manually
+--It sends a signal which ultimately terminates or kills a particular process or group of processes
+
+usage: kill [option] [pid]
+
+
+option=signal name or signal number / ID
+PID=process ID
+
+kill -1 =to get a list of all signal names or signal number
+kill PID= Kill a process with default signal
+kill -1= Restart
+kill -2= Interrupt from the keyboard just like Ctrl C
+kill -9=Forcefully kill the process
+kill -15=Kill a process gracefully
+
+=======================
+Crontab: cmd is used to schedule tasks
+
+usage:
+--crontab -e = edit the crontab
+--crontab -l = list the crontab entries
+--crontab -r = remove the crontab
+--crond = crontab daemon/service that manages scheduling
+--systemctl status crond= to manage the crond service
+
+column wise:
+1--minute(0-59)
+2--hour(0-23)
+3--day of the month(1-31)
+4--month(1-12)
+--day of the week(0-6)(sunday to saturday; 7 is also sunday on some systems)
+
+> create crontab entry by scheduling a task:
+
+crontab -e
+schedule, echo "this is my firwst crontab entry"> crontab-entry
+
+ex:
+root@Varma:~# crontab -e
+no crontab for root - using an empty one
+crontab: installing new crontab
+
+it is open terminal like vim need to give input and save it
+
+root@Varma:~# ls -lrt
+total 12
+drwx------ 3 root root 4096 Aug 26 12:17 snap
+drwxr-xr-x 2 root root 4096 Oct  1 15:56 a
+-rw-r--r-- 1 root root   35 Nov 20 10:39 crontab
+root@Varma:~# cat crontab
+
+root@Varma:~# cat crontab
+this is my 1st cronjob entry entry
+
+root@Varma:~# crontab -l
+39 10 * 11 * echo "this is my 1st cronjob entry" > crontab entry
+=======================
+at= mnd is like crontab which allows you to schedule jobs but only once.
+
+--when the mnd is run it will enter interactive mode and you can get out by pressing CTRL+D
+
+usage:
+
+--at HH:MM PM = schedule a job
+--atq = ist the at entries
+--atrm # = remove at entry
+--atd = at daemon/service that manages scheduling
+--systemctl status atd = to manage the atd service
+
+Create at entry by scheduling a task:
+root@Varma:~# at 11:02AM
+
+at Mon Nov 20 11:02:00 2023
+at> echo "this is my 1st at job" > at entry
+at> <EOT>  (ctrl+d)
+job 1 at Mon Nov 20 11:02:00 2023
+root@Varma:~# atq
+1       Mon Nov 20 11:02:00 2023 a root
+
+root@Varma:~# ls
+a  at  crontab  snap
+
+root@Varma:~# cat at
+this is my 1st at job entry
+
+> other future scheduling format:
+--at 2:45 AM 10162023 = scheduled a job to run on oct 16th ,2023 at 2:45am
+--at 4pm + 4 days = schedule a job at 4 pm four days from now
+--at now +5 hours = schedule a job to run five hours from now
+--at 8:00 AM sun = schedule a job to 8 am on coming sunday
+--at 10:00 AM next month = schedule a job to 10am next month
+====================
+Additional cron jobs:
+
+- by default there are 4 diff types of cronjobs
+	Hourly
+	daily
+	weekly
+	monthly
+- all the above cron are setup in 
+	. etc/cron.__(directory)
+- the timing for each are set in
+	. /etc/acrontab -- expect hourly
+- for hourly
+	. /etccron.d/0hourly.	
+
+> ls -l|grep cron
+
+o/p shows all the cron jobs like cron.daily , cron.weekly ....
+
+===============================
+Process management:
+
+> root@Varma:~# whatis sleep
+sleep (1)            - delay for a specified amount of time
+
+-background=ctrl-z, jobs and bg
+-foreground=fg
+-run process even after exit=nohup process &
+	or= nohup process> /dev/null 2>&1 &
+-kill a process by name=pkill
+-process priority=nice (e.g. nice -n 5 process)
+	the niceness scale goes from -20 to 19. the lower the number more prority that task gets
+
+-process monitoring=top
+-list process =ps.
+============================
+system monitoring:
+	top
+	df
+	dmesg
+	iostat 1
+	netstat
+	free
+	cat /proc/cpuinfo
+	cat /proc/meminfo
+--dmesg= shows system warnings,error msggs,failures or anything like that
+--iostat= IO stands for input and output statistics,thatthe disk is being used with read per second,write per second and a lot of different information
+--cat /proc/cpuinfo=every time your computer is started it keeps all its system resources infomation into files and those files are located in proc. this proc is the directory where it keeps us all system information.will find CPU info right here.
+--cat /proc/meminfo= its storing all the msgs,all that  screen multiple at one spot 
+root@Varma:~# cat /proc/cpuinfo
+processor       : 0
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 126
+model name      : Intel(R) Core(TM) i3-1005G1 CPU @ 1.20GHz
+stepping        : 5
+microcode       : 0xffffffff
+cpu MHz         : 1190.403
+cache size      : 4096 KB
+physical id     : 0
+siblings        : 4
+core id         : 0.......................
+
+======================================
+Log Monitoring:
+another and most imp way of system adminstration is log monitor
+
+Log Directory=/var/log
+-boot
+-chronyd=NTP
+-cron
+-maillog
+-secure
+-messages
+-httpd
+
+>/var/log:
+root@Varma:~# cd /var/log
+root@Varma:/var/log# ls
+alternatives.log       installer
+alternatives.log.1     journal
+alternatives.log.2.gz  kern.log
+apt                    kern.log.1
+auth.log               kern.log.2.gz
+auth.log.1             kern.log.3.gz
+auth.log.2.gz          lastlog
+auth.log.3.gz          private
+bootstrap.log          syslog
+btmp                   syslog.1
+btmp.1                 .....................
+
+>boot.log
+every time there is an issue with the system booting up, it will come up with a message saying false or error or alert
+--when you reboot your system this file get overwritten
+
+> chrony=replacement of Http service,an type of changes that we make on the chrony service,it actually generates the log and it actually logs that information into the logs
+
+>cron: whenever yoy schedule a job or process through a cron job entry,it generates some kind of activity amd that activity or that record is logged into this file.
+
+>maillog:it hs all the information about yor sendmail daemon,which means every time you send an emanil out or every time an email comes in,all that activity is being recorded in this log.
+
+>secure: is the log that actually records all your logging in,logging ot activity.so when you do more on secure,you will see all the users that have been logged in.
+
+> messages: every time there's an issue wit your machine, the first thing an administrator does,they log into your machine and they will trace the logs in messages file.
+
+=======================
+system maintainance commands:
+-shutdown
+-init xxx 0-6
+-reboot
+-halt
+root@Varma:/# whatis init
+init (1)             - systemd system and service manager
+root@Varma:/# whatis halt
+halt (8)             - Halt, power-off or reboot the machine
+root@Varma:/#
+root@Varma:/# whatis reboot
+reboot (8)           - Halt, power-off or reboot the machine
+root@Varma:/# whatis shutdown
+shutdown (8)         - Halt, power-off or reboot the machine
+
+=========================
+Hostname:
+to change the hostname:
+hostnamectl - set-hostname newhostname
+
+-version 7 = edit /etc/hostname
+-version 6 = edit /etc/sysconfig/network
+
+root@Varma:~# hostname
+Varma
+root@Varma:~# cat /etc/hostname
+Varma
+root@Varma:~# hostnamectl set-hostname siva
+root@Varma:~# hostname
+siva
+
+after reboot the system with reboot cmd or init 6 
+
+then: root@siva:~#
+=====================================
+Finding system information:
+
+-cat /etc/redhat-release
+-uname -a
+-dmidecode
+
+root@Varma:~# uname -a
+Linux siva 5.15.133.1-microsoft-standard-WSL2 #1 SMP Thu Oct 5 21:02:42 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+root@Varma:~#
+==============================
+system architecture:
+
+A big diff blw 32 bit processors and 64 bit processors is the number of calculations per sec they can perform.
+
+> linux=arch
+> windows= my computer --> properties
+
+root@Varma:~# arch
+x86_64
+
+or 
+
+root@Varma:~# uname -a
+Linux siva 5.15.133.1-microsoft-standard-WSL2 #1 SMP Thu Oct 5 21:02:42 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
+
+===========================
+Terminal control
+
+ctrl+u - erise everything you 've typed on the command line
+ctrl+c - stop/kill a command
+ctrl+z - suspend a command
+ctrl+d - exit from an interactive program (signals end of data).
+
+============================
+Terminal commands
+
+clear
+exit
+script: the cmd stores terminal activities in alog file that can be named by a user,when a name is not provided by a user,the default file name, typescript is used.
+
+in script log file every cmd is stored 
+> script log.file
+===========================
+Sos report:
+def: Collect and package diagnostic and support data
+-it actually collects all the information about your files,your logs, put it into a package and it
+
+package ame
+>sos-version
+
+cmd:
+> sosreport
+
+===========================
+Environmental variables:
+
+-An environmental variable is a dynamic-named value that can affect the way running processes will behave on a computer. They are part of the environment in which a process runs.
+
+-In simple words,set of defined rules and values to build an environment 
+
+-To view all env variables:
+env or printenv
+
+- to view ONE env variable
+echo $SHELL
+
+root@Varma:~# echo $SHELL
+/bin/bash
+
+-To set the env variables
+export TEST=1
+echo $TEST
+
+root@Varma:~# export TEST=1
+root@Varma:~# echo $TEST
+1
+
+-To set env variable permanently
+vi .bashrc
+TEST='123'
+export TEST
+
+-To set global env variable permanently
+vi /etc/profile or /etc/bashrc
+Test ='123'
+export TEST 
+==================================
+Special permissions with setuid,setgid and sticky bit
+
+-All permissions on a file or directory are referred as bits
+
+there are 3 additional permission in linux:
+-setuid: bit tells linux to run a program with the effective user id of the owner of the executor(e.g passwd command) /etc/shadow
+
+-setgid: bit tells linux to run a proram with the effective group id of the effective group id of the owner instead of the executor(eg: locate or wall cmd)
+
+-sticky bit: bit set on files/directories that allows only the owner or root to delete those files
+
+===================
+
+Quiz:
+
+-What key is used in vi to insert and start from new line?
+ p/o/u/r
+
+ans:o
+
+-Which command is used to modify user attributes?
+sol:usermod
+
+-Which command is used to run commands used by root user only
+sol: sudo cmd-name
+
+-Which file is used to add a user to sudo configuration file?
+sol:/etc/sudoers
+
+-How to find out information about a user?
+sol:id user
+
+-"date" command is used for?
+sol: view and set date
+
+-Which of the following command is correct if you want to view only the month of January 2008
+sol: cal 1 2008
+
+-What is the difference between a process and a daemon
+sol: processes runs and ends after it is done with the task where as daemon runs at all times and wait or listen to protocols
+
+-How to start a system service such as ntpd in CentOS/RHEL 7?
+sol:systemctl start ntpd
+
+-What does a ps -ef command shows?
+sol: list all running process
+
+-What is the difference between shutdown and halt command?
+sol:halt brings the system down to its lowest state,but leaves it powered on.shutdown bring the system down to its lowest state,and will turn off power.
+
+-Why it is important for a system admin to monitor logs?
+sol: because log will have all the system messages and system admin can trace the log to find the root cause
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
