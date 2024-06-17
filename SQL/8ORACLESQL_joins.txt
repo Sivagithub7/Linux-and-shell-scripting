@@ -1,0 +1,348 @@
+JOINS:
+=======
+
+- joins are used to retrieval the required data/information
+from multiple tables.
+- joins statements can written in two formats,
+
+1. Non-ansi joins(oracle8i version)
+> Equi join
+> Non-Equi join
+> Self join
+
+2. Ansi joins(oracle9i version)
+> inner join(equi join)
+> outer join
+   > left outer join
+   > right outer join
+   > full outer join
+> cross join
+> natural join
+
+
+Tables: 
+SQL> select * from cource;
+
+       CID CNAME            CFEE
+---------- ---------- ----------
+        10 oracle           2500
+        20 java             5000
+        30 .net             6000
+
+SQL> select * from student;
+
+      STID SNAME             CID
+---------- ---------- ----------
+      1021 smith              10
+      1022 allen              10
+      1023 ward               20
+      1024 miller
+	  
+1) Inner join/equi join:
+=======================
+
+Q) waq to retrieval student and the corresponding course details from tables by using equi join / inner join?
+
+NON-ANSI:
+=========
+SQL> select * from student,cource where student.cid=cource.cid;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+
+Ansi:
+=====
+SQL> select * from student inner join cource on student.cid=cource.cid;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+
+> RULE OF JOINS:
+==============
+a row in a table is comparing with all rows in another table. 
+
+WHERE S.CID=C.CID;
+(or)
+ON S.CID=C.CID;
+
+O/P:
+
+s.cid = c.cid
+===== ======
+10 		10
+20 		10
+30 		20
+		null
+		
+2) OUTER JOINS:
+============
+i) left outer join:
+===================
+- retrieving matching row from both tables and unmatching rows from left side table only.
+
+EX:
+
+ANSI:
+=====
+SQL> SELECT * FROM STUDENT S LEFT OUTER JOIN COURSE C ON S.CID=C.CID;
+
+ STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+      1024 miller
+
+NON-ANSI:
+==========
+- when we want to write outer joins in non ansi format then we use a special join operator is (+).
+EX:
+
+
+SQL> SELECT * FROM STUDENT S, COURCE C WHERE S.CID=C.CID(+);
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+      1024 miller
+
+SQL> SELECT * FROM STUDENT, COURCE WHERE STUDENT.CID=COURCE.CID(+);
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+      1024 miller
+
+3) right outer join:
+===================
+- retrieving matching row from both tables and unmatching rows from right side table only.
+
+ANSI:
+====
+
+EX:
+
+SQL> SELECT * FROM STUDENT S RIGHT OUTER JOIN COURCE C ON S.CID=C.CID;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+                                         30 .net             6000
+NON ANSI:
+========
+SQL> SELECT * FROM STUDENT S,COURCE C WHERE S.CID=C.CID;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+
+SQL> SELECT * FROM STUDENT S,COURCE C WHERE S.CID(+)=C.CID;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+                                         30 .net             6000
+										 
+4) full outer join:
+================
+- it combination of left outer and right outer join.
+- retrieving matching and also unmacthing rows from both tables at a time.
+
+ANSI:
+
+SQL> SELECT * FROM STUDENT S FULL OUTER JOIN COURCE C ON S.CID=C.CID;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+      1024 miller
+                                         30 .net             6000
+NON ANSI;
+
+SQL> SELECT * FROM STUDENT S,COURCE C WHERE S.CID=C.CID(+) UNION
+  2  SELECT * FROM STUDENT S,COURCE C WHERE S.CID(+)=C.CID;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         20 java             5000
+      1024 miller
+                                         30 .net             6000
+
+5) CROSS JOIN:
+===========
+- joining tables without any condition is called as "cross join".
+- in cross join mechanism a row in a table is comparing with all rows in another table.
+for example a table is having (m) no.of rows and another table is having (n) no.of rows
+then the result is (mxn) rows.
+
+EX:
+
+ANSI:
+
+SQL> SELECT * FROM STUDENT CROSS JOIN COURCE;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         10 oracle           2500
+      1024 miller                        10 oracle           2500
+      1021 smith              10         20 java             5000
+      1022 allen              10         20 java             5000
+      1023 ward               20         20 java             5000
+      1024 miller                        20 java             5000
+      1021 smith              10         30 .net             6000
+      1022 allen              10         30 .net             6000
+      1023 ward               20         30 .net             6000
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1024 miller                        30 .net             6000
+NON ANSI:
+
+SQL> SELECT * FROM STUDENT,COURCE;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1021 smith              10         10 oracle           2500
+      1022 allen              10         10 oracle           2500
+      1023 ward               20         10 oracle           2500
+      1024 miller                        10 oracle           2500
+      1021 smith              10         20 java             5000
+      1022 allen              10         20 java             5000
+      1023 ward               20         20 java             5000
+      1024 miller                        20 java             5000
+      1021 smith              10         30 .net             6000
+      1022 allen              10         30 .net             6000
+      1023 ward               20         30 .net             6000
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1024 miller                        30 .net             6000
+
+
+6) NATURAL JOIN:
+=============
+- it is similar to equi join to retrieving matching rows from tables because natural join is also joins tables based on an "=" operator.
+
+EX:
+
+Natural join Equi join
+========= =======
+     NATURAL join					EQUI/INNER
+     ------------				    -----------------
+1. to eliminate duplicate columns               1. Not eliminate duplicate columns.
+from the result set automatically.
+2. common column name is                        2. optional.
+mandatory to have in both tables.
+
+SQL> SELECT * FROM STUDENT NATURAL JOIN COURCE;
+
+       CID       STID SNAME      CNAME            CFEE
+---------- ---------- ---------- ---------- ----------
+        10       1021 smith      oracle           2500
+        10       1022 allen      oracle           2500
+        20       1023 ward       java             5000
+		
+7) SELF JOIN:
+==========
+- joining a table by itself is called as "self join".
+(or)
+- comparing a table data by itself is called as "self join".
+
+Basic rules:
+==========
+- we can perform operations on a single table.
+- when we use self join we should create alias names on a table otherwise
+we cannot implement self join.
+- when we create alias name on a table internally system is preparing virtual
+table on each alias name of a table.
+- we can create any no.of alias names on a table but each alias name should
+be different.
+
+purpose of self join:
+=================
+case-1: comparing a single column values by itself with in the table.
+case-2: comparing two different columns values to each other with in the table.
+
+NON-ANSI:
+
+SQL> SELECT S1.SNAME AS SNAME,C1.CNAME AS CNAME FROM STUDENT S1,COURCE C1 WHERE S1.CID=C1.CID;
+
+SNAME      CNAME
+---------- ----------
+smith      oracle
+allen      oracle
+ward       java
+
+8) NON-EQUI JOIN:
+==============
+- retrieving data from multiple tables based on any condition except an "=" operator.
+- we can use the following operators are <,>,<=,>=,!=(or)<>, between,and,..........etc.
+
+EX:
+NON ANSI:
+
+SQL> SELECT * FROM STUDENT S1,COURCE C1 WHERE S1.CID>C1.CID;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1023 ward               20         10 oracle           2500
+
+ANSI:
+
+SQL> SELECT * FROM STUDENT S1 JOIN COURCE C1 ON S1.CID>C1.CID;
+
+      STID SNAME             CID        CID CNAME            CFEE
+---------- ---------- ---------- ---------- ---------- ----------
+      1023 ward               20         10 oracle           2500
+	  
+> HOW TO JOIN MORE THAN TWO TABLES:
+===================================
+SYNTAX FOR NON-ANSI FORMAT:
+============================
+
+SELECT * FROM <TN1>,<TN2>,<TN3>,<TN4>,.............
+WHERE <JOIN CONDITION1> AND <JOIN CONDITION2> AND <JOIN CONDITION3>.......;
+SYNTAX FOR ANSI FORMAT:
+========================
+SELECT * FROM <TN1> <JOIN KEY> <TN2> ON <JOIN CONDITION1>
+<JOIN KEY> <TN3> ON <JOIN CONDITION2>
+<JOIN KEY> <TN4> ON <JOIN CONDITION3>
+......................................................................
+......................................................................
+<JOIN KEY> <TN n> ON <JOIN CONDITION n-1>;
+SQL> SELECT * FROM REGISTER;
+REGNO REGDATE CID
+---------- --------- ----------
+1 27-SEP-22 10
+2 28-SEP-22 20
+3 29-SEP-22 40
+EQUI JOIN:
+==========
+SQL> SELECT * FROM STUDENT S,COURSE C,REGISTER R
+2 WHERE S.CID=C.CID AND C.CID=R.CID;
+INNER JOIN:
+==========
+SQL> SELECT * FROM STUDENT S INNER JOIN COURSE C
+2 ON S.CID=C.CID INNER JOIN REGISTER R ON C.CID=R.CID;

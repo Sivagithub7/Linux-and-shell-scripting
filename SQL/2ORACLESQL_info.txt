@@ -1,0 +1,54 @@
+ORACLE19C
+=========
+>> It is a db software /rdms product/backend tool.
+>> Introduced by oracle coorporation in 1979.
+>> Platform independent.
+>> latest version 21C
+>> Used to store data/information permanently along with security
+>> It can deployed in any OS like windows,linux,mac,solaries etc..
+> communication--Using SQLCODE
+> connection -- Using SQLPLUS tool.
+
+      SQLPlUS                                 	      SQLCODE
+1) It is a DB tool	  			1) It is DB language
+2) Introduced by oracle coorporation		2) Introduced by IBM.
+3) Will work as a editor			3) It having sub lang like DDL,DML,etc..
+4) Used to connecting to oracle db server	4) used to communicate with DB.
+
+Why Oracle?
+==========
+1) Security
+2) Performance
+3) Scalablility
+4) Powerfull coding
+5) Support
+Companies used:
+facebook/IBM/Linkedin/Amazon/Fortune/JP Morgan/Paypal
+
+Where we use sql?
+=============
+BI,Data science, DBA, Web dev,etc..
+
+Q) Database __________ , which is the logical design of the database, and the database _______,which is a snapshot of the data in the database at a given instant in time.
+
+sol: scheme, instance
+SQL
+======
+>> Sql is a language which is used to communicate with database.
+>> Not a case sensitive.
+>> Sub languages are
+1) DDL( Data Definition language)
+> CREATE  > ALTER	> RENAME	> TRUNCATE	> DROP
+
+2) DML( Data Definition language)
+> INSERT	> UPDATE	> DELETE
+
+3) DQL/DRL ( Data query language/ Data retrival language)
+> SELECT
+
+4) TCL (TRANSACTION control language)
+> COMMENT	> ROLLBACK	> SAVEPOINT
+
+5) DCL ( Data Control language)
+> GRANT  > REVOKE
+

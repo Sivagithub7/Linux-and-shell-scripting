@@ -1,0 +1,83 @@
+															DBMS:
+=============================================================================================================================
+DATA: Data is a rawfact(I.E char's.numbers,special char's,symbols etc..)
+-->It never gives menaningfull statements.
+
+EX: SMITH    1086
+    WARD     7575
+   
+INFORMATION: Processing data
+>>It gives meaningfull statements.
+
+EX: CUSTOMER    CUS_ID
+	--------	------
+	Smith 		25826
+	Miller		7637
+	
+DATABASE: It is a memory
+>>Collection of interrelated data/information or a place that we store an organized collection of data.
+
+EX: BANK_SBI
+				BRANCHES
+							DEPT
+							        EMP
+									      CUSTOMER
+														ACOUNTS/LOANS
+											
+TYPES OF DATABASE: 
+1) OLTP(ONLINE TRANSISSION PROCESSING)
+2) OLAP(ONLINE ANALITICAL PROCESSING)
+
+(1)OLTP: Storing the "day to day" transitional information(live operations are :insert,update ,delete,select)
+EX: Oracle,Server sql,Mysql,Db2
+SBI BANK:--x-customer--network--open on 25june2024(on receipt)
+
+(2)OLAP: Storing historical (big data) data/ inforation
+Select(retrival/read)operation only.
+EX: Dataware house
+
+DATA STORAGES: >Papers & books(before computers)
+			   >Flatfiles(from computers)
+			   >DBMS(software)
+2)FLATFILES:
+>>Data redundancy: When a name and address are both present in different columns within a table(multiple copies of same data).
+>>Data inconsistancy: Condition that occurs b/w tables when similar data is kept in different formats in two diff tables.
+>>Data retrieval: WHICH IS VERY COMPLEX WHILE RETRIEVING DATA FROM FILES WHICH WAS ADDRESSED WITH HIGH LEVEL LANGUAGE.
+--WHERE AS IF YOU WANT TO RETRIEVE DATA FROM DATABASE THEN WE ARE USING SQL LANGUAGE.
+>>Data integrity: concept and process that ensures the accuracy, completeness, consistency, and validity of an organizations data.
+>>Data security: DATA IS NEVER SECURE UNDER BOOKS AND FLAT FILE WHERE AS DATABASEARE PROVIDING AN EXCELLENT CONCEPT IS CALLED AS
+ROLE BASED SECURITY MECHANISM FOR ACCESSING DATA FROM DATABASE WITH SECURITY MANNER WITH THE HELP OF AUTHENTICATION AND AUTHORIZATION
+>>Data indexing: INDEXES ARE USING FOR ACCESSING DATA MUCH MORE FASTER BUTFLAT FILES DOES NOT PROVIDE ANY INDEX MECHANISM WHERE AS 
+DATABASE WILL PROVIDE INDEXING MECHANISM.
+
+DBMS: It is a software which is used to maintain & manage data/information in database memory.
+--By using DBMS s/w we can:
+>>Creating database memory
+>>Creating Tables
+>>Inserting data
+>>Updating data
+>>Selecting data
+>>Deleting data
+
+Models of DBMS: 
+>>Hierarchial DBMS (outdated)
+>>Network DBMS (outdated)
+>>Relational DBMS
+
+>>Relational DBMS:
+1)ORDBMS(Object Relational DBMS)
+2)OODBMS(Object Oriented DBMS)
+
+	ORDBMS  									  OODBMS
+											  
+1)It depends on SQL								1) It depends on OOPs concept			  
+2)Data can be stored in table format						2)Data can store in form of objects.				
+  table=Collection of rows/colums										  
+  row=Group of columns					  
+EX: Oracle,Sql server,DB2							EX: Mongodb,Cassandra etc..
+
+					  
+											  
+											  
+
+
