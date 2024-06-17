@@ -1,0 +1,162 @@
+In Oracle PL/SQL, exceptions are used to handle errors that occur during the execution of a PL/SQL block. They provide a way to gracefully handle unexpected situations and recover from errors without terminating the entire program. Here's an overview of exceptions in Oracle PL/SQL:
+
+Types of Exceptions:
+
+System Exceptions: These exceptions are predefined by Oracle and are raised automatically when specific errors occur, such as division by zero (ZERO_DIVIDE) or trying to insert a duplicate value into a unique column (DUP_VAL_ON_INDEX).
+User-Defined Exceptions: These exceptions are defined by the programmer and raised explicitly using the RAISE statement. They allow you to handle specific error conditions within your PL/SQL code.
+Handling Exceptions:
+
+Exception Handlers: An exception handler is a block of code that is executed when a specific exception occurs. It is defined using the EXCEPTION keyword followed by the exception name or the keyword OTHERS to handle all exceptions not explicitly handled elsewhere in the block.
+RAISE Statement: The RAISE statement is used to raise a user-defined exception explicitly within a PL/SQL block. It allows you to indicate that an error condition has occurred and provide a custom error message.
+Exception Propagation: If an exception is not handled within a PL/SQL block, it propagates to the enclosing block or to the calling environment. If it is not handled at all, the program terminates with an unhandled exception error.
+Example:
+
+sql
+Copy code
+DECLARE
+  v_salary NUMBER;
+BEGIN
+  SELECT salary INTO v_salary FROM employees WHERE employee_id = 1000;
+  dbms_output.put_line('Salary: ' || v_salary);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    dbms_output.put_line('Employee not found.');
+  WHEN OTHERS THEN
+    dbms_output.put_line('An error occurred: ' || SQLERRM);
+END;
+
+In this example, if the employee with ID 1000 is not found, the NO_DATA_FOUND exception is raised and handled, printing "Employee not found." If any other error occurs, it is handled by the OTHERS exception handler, which prints the error message returned by the SQLERRM function.
+
+Exceptions play a crucial role in handling errors and ensuring the robustness of PL/SQL programs by providing mechanisms for graceful error recovery and reporting.
+==========================================
+declare
+l_ename varchar2(100);
+begin
+select ename into l_ename from emp where empno=7839;
+dbms_output.put_line(l_ename);
+end;
+
+o/p:
+KING
+
+------------------------------
+declare
+l_ename varchar2(100);
+begin
+select ename into l_ename from emp where empno=12345;
+dbms_output.put_line(l_ename);
+end;
+
+o/p:
+Error report -
+ORA-01403: no data found
+ORA-06512: at line 4
+01403. 00000 -  "no data found"
+*Cause:    No data was found from the objects.
+*Action:   There was no data from the objects which may be due to end of fetch.
+
+so we will use exceptions
+
+ex:
+declare
+l_ename varchar2(100);
+begin
+select ename into l_ename from emp where empno=12345;
+dbms_output.put_line(l_ename);
+EXCEPTION
+WHEN no_data_found THEN
+dbms_output.put_line('Query not returning any value');
+end;
+
+o/p:
+Query not returning any value
+---------------------------------------------
+declare
+l_ename varchar2(100);
+begin
+select ename into l_ename from emp;
+dbms_output.put_line(l_ename);
+EXCEPTION
+WHEN no_data_found THEN
+dbms_output.put_line('Query not returning any value');
+end;
+
+o/p:
+
+Error report -
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at line 4
+01422. 00000 -  "exact fetch returns more than requested number of rows"
+*Cause:    The number specified in exact fetch is less than the rows returned.
+*Action:   Rewrite the query or change number of rows requested
+
+==========================================
+declare
+l_ename varchar2(100);
+begin
+select ename into l_ename from emp;
+dbms_output.put_line(l_ename);
+EXCEPTION
+WHEN no_data_found THEN
+dbms_output.put_line('Query not returning any value');
+when too_many_rows then
+dbms_output.put_line('Query returning many rows');
+end;
+
+o/p:
+
+Query not returning any value
+============================================
+when we dont know error msg then:  use others (mention in last)
+
+declare
+l_ename number(10);
+begin
+select ename into l_ename from emp where empno=7839;
+dbms_output.put_line(l_ename);
+EXCEPTION
+WHEN no_data_found THEN
+dbms_output.put_line('Query not returning any value');
+when too_many_rows then
+dbms_output.put_line('Query returning many rows');
+when  others then
+dbms_output.put_line('some error msg occured'||SQLERRM);
+end;
+
+o/p:
+
+some error msg occuredORA-06502: PL/SQL: numeric or value error: character to number conversion error
+
+
+
+
+
+
+
+
+
+========================================
+when we known error:
+declare
+l_var number(10);
+my_own_exception EXCEPTION;
+begin
+l_var:=9;
+if l_var < 10 THEN
+RAISE my_own_exception;
+end if;
+EXCEPTION
+when my_own_exception then
+dbms_output.put_line('value is less than 10');
+end;
+
+o/p:
+
+value is less than 10
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+see in nodse.
+
+ex:
+
+create or replace function calc(a number, b number,op char) return number is
+begin
+if op='+' then
+return(a+b);
+elsif op='-' then
+return(a-b);
+elsif op='*' then
+return(a*b);
+else
+return(a/b);
+end if;
+end;
+
+
+Function CALC compiled
+
+select calc(10,20,'*') from dual;
+o/p:
+200
+-------------------------
+variable k number 
+
+execute :k := calc(20,50,'*');
+PL/SQL procedure successfully completed.
+
+print :k
+
+o/p:
+
+
+         K
+----------
+      1000

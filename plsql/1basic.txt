@@ -1,0 +1,15 @@
+> (note: dbms_output= build in package 
+put_line= procedure(gives stangard output purpose)
+
+ex:
+begin
+dbms_output.put('raj');
+dbms_output.put_line('kumar');
+end;
+/
+
+o/p:
+rajkumar
+
+here put line means cursor comes next line, only put then cursor will same line.
+====================================

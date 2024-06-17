@@ -1,0 +1,200 @@
+Used to control flow of the program.
+There are 3 types:
+1) Conditional control statements
+2) Branching c s
+3) Iteration c s
+
+1) Conditional control statements
+--> Simple if else: It contains only true block or it throwls else block.
+
+SQL> declare
+  2  a number;
+  3  b number;
+  4  begin
+  5  a:=10;
+  6  b:=20;
+  7  if a>b then
+  8  dbms_output.put_line('a is bigger than b');	
+  9  else
+ 10  dbms_output.put_line('a is smaller than b');
+ 11  end if; end;
+ 12  /
+a is smaller than b
+
+PL/SQL procedure successfully completed.
+
+ex:
+
+declare 
+agevariable number(3);
+begin
+agevariable:=&enter_age;
+dbms_output.put_line(agevariable);
+if agevariable>18 then
+dbms_output.put_line('eligible for voter id');
+elsif agevariable =18 then
+dbms_output.put_line('just got eligible for voter id');
+else
+dbms_output.put_line('not eligible for voter id');
+end if;
+end;
+
+o/p:
+
+18
+just got eligible for voter id
+===========================================
+--> nested if: If within  the if is called nested  if.
+declare
+a number;
+b number;
+c number;
+begin
+a:=5;
+b:=10;
+c:=15;
+if a<b then
+if a>c then
+dbms_output.put_line(a||' '||'is bigger');
+else
+dbms_output.put_line(c||' '||'is biggest');
+end if;
+elsif b>c then
+dbms_output.put_line(b||' '||'is biggest');
+else
+dbms_output.put_line(c||' '||'is bigger');
+end if;
+end
+/
+
+15 is biggest
+-------------------------------------------------
+Loops:
+1) Simple loop:
+
+declare 
+i number(5);
+begin
+i:=1;
+loop
+dbms_output.put_line(i);
+i:=i+1;
+exit when i>10;
+end loop;
+end;
+/
+
+o/p:
+1
+2
+.
+.
+9
+10
+-----------
+ex:
+declare
+var1 number(2);
+begin
+var1:=1;
+loop
+dbms_output.put_line(var1);
+var1:=var1+1;
+exit when(var1>10);
+end loop;
+end;
+
+o/p:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+-----------
+> If we want to print particular number:
+declare
+var1 number(2);
+limitvar number;
+begin
+var1:=1;
+limitvar:=&enterval;
+loop
+dbms_output.put_line(var1);
+var1:=var1+1;
+exit when(var1>limitvar);
+end loop;
+end;
+
+o/p:
+
+1
+.
+.
+15
+
+note: here we can say that when we will get out of the loop
+============================
+2) while loop:
+note: here we can say that what we will execute until the condition.
+ex:
+declare 
+i number(5);
+begin
+i:=1;
+while i<=10 
+loop
+dbms_output.put_line('i='||i);
+i:=i+1;
+end loop;
+end;
+/
+
+o.p:
+i=1
+i=2
+.
+.
+i=9
+------------------------------------------
+3) for loop:
+
+begin
+for i in 1..10 
+loop
+dbms_output.put_line('i='||i);
+end loop;
+end;
+/
+
+o/p:
+i=1
+1=2
+.
+.
+i=10
+
+or
+
+begin
+for i in reverse 1..10 
+loop
+dbms_output.put_line('i='||i);
+end loop;
+end;
+/
+
+o/p:
+x=10
+x=9
+.
+.
+x=1
+------------------
+
+

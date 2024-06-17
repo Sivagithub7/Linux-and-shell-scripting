@@ -1,0 +1,142 @@
+Find the LAST inserted record in a table
+Write a query to find the LAST inserted record in a table.
+Answer:
+If you want the last record inserted, you need to have a timestamp or sequence number assigned to each
+record as they are inserted and then you can use the below query…
+select * from t
+where TIMESTAMP_COLUMN = (select max(timestamp_column) from T)
+and rownum = 1; 
+-----------------------------
+Find the LAST inserted record in a table
+Write a query to find the LAST inserted record in a table.
+Answer:
+If you want the last record inserted, you need to have a timestamp or sequence number assigned to each
+record as they are inserted and then you can use the below query…
+select * from t
+where TIMESTAMP_COLUMN = (select max(timestamp_column) from T)
+and rownum = 1; 
+=---------------------------------
+Past 5 years Question.
+Write a query to find the employees who are working in the company for the past 5 years.
+Answer:
+We can achieve this using the ADD_MONTHS function.
+select * from emp where hiredate < add_months(sysdate,-60);
+-----------------------------------
+Select LAST n records from a table
+Write a query to select the last N records from a table…
+Or
+Explain the below query…
+select * from emp
+minus
+select * from emp where rownum <=
+ (select count(*) - &n from emp);
+Answer:
+We all know when you execute a SQL statement, sub query is the one which is executed first.
+Step1: So if you run statement "select count(*) - &n from emp" and think EMP table has 10 rows
+and N value is 3. The output for below SQL statement will be 10 - 3, ie 7
+Step2: Now oracle takes 7 and execute the SQL statement as "select * from emp where rownum <=
+7", which willl fetch the first 7 rows.
+Step3: Now oracle runs SQL statement "select * from emp", which willl fetch all the 10 rows
+Step4: Now oracle takes the 10 rows from step3 and subtracts the 7 rows from step2, which will
+result in last 3 rows.
+This is how you need to explain to the Interviewer….
+-------------------------------------------
+
+Maximum salary without using functions
+Write a query to find the maximum salary from the EMP table without using functions.
+Answer:
+We can achieve this by using the SELF joins.
+select * from emp
+where sal not in
+(
+select A.sal
+from emp A, emp B
+where A.sal < B.sal
+)
+-----------------------------------------
+
+More than 2 employees Question
+Write a query to display the employee information, who have more than 2 employees under a
+manager
+Answer:
+We can achieve this by using the COUNT analytical function.
+select * from
+(
+SELECT e.*, count(mgr) over (partition by mgr) as cnt
+from emp e
+)
+where cnt >= 2
+-----------------------------------
+Odd/Even rows Question
+Write a query to display even/odd number rows from a table.
+Answer:
+We can achieve this by using the ROWNUM pseudo column.
+select * from
+ (select empno, ename, sal, rownum rn
+ from emp
+ order by empno
+ )
+where mod (rn, 2) <> 0
+order by rn
+=====================================
+Same Salary Question
+Write a query to select only those employee information who are earning the same salary?
+Answer:
+We can achieve this in at least 3 ways…
+1
+st way
+select e1.* from emp e1,emp e2
+where e1.sal=e2.sal
+ and e1.ename <> e2.ename
+2
+nd way
+select * from emp
+where sal in
+ (select sal from emp
+ group by sal
+ having count(sal)>=2
+ )
+3
+rd way
+SELECT *
+FROM
+(
+SELECT e.*, count(*) Over (Partition BY sal ORDER BY sal) cnt
+FROM emp e
+)
+WHERE cnt>=2;
+------------------------------------
+Select/Delete duplicate rows from EMP table
+Write a query to select/delete duplicate rows from the EMP table
+Answer:
+We can achieve this by using the pseudo column ROWID.
+select * from emp
+where rowid not in
+(
+select min(rowid)
+ from emp
+ group by empno
+);
+delete from emp
+where rowid not in
+(
+select min(rowid)
+ from emp
+ group by empno
+);
+----------------------------------
+Select top N salaries from EMP table
+Write a query to select top N salaries from the EMP table
+(or)
+Write a query to select maximum N salaries from the EMP table
+Answer:
+We can achieve this by using the DENSE_RANK Analytical function. In the below example we are
+getting the TOP 5 salaries from the EMP table.
+select * from
+(
+select e.*,
+DENSE_RANK() over (order by sal DESC) RN
+from emp e
+)
+where RN <=5
+-

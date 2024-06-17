@@ -1,0 +1,129 @@
+Cursor: def in written notes:
+Explicit cur:
+
+> write a cursor program to fetch a single row from emp table?
+
+declare cursor c1 is select ename,sal from emp;
+v_ename varchar(10);
+v_sal number(10);
+begin
+open c1;
+fetch c1 into v_ename,v_sal;
+dbms_output.put_line(v_ename||','||v_sal);
+close c1;
+end;
+/
+
+o/p:
+JONES,2975
+
+Statement processed.
+
+0.01 seconds
+----------------------------------------
+
+Simple loop:
+
+declare cursor c2 is select ename,sal from emp;
+v_ename varchar(10);
+v_sal number(10);
+begin
+open c2;
+loop
+fetch c2 into v_ename,v_sal;
+exit when c2%notfound;
+dbms_output.put_line(v_ename||','||v_sal);
+end loop;
+close c2;
+end;
+/
+
+o/p:
+
+
+================================
+simple loop:
+
+declare
+--declare cursor
+cursor cur_emp is select * from emp;
+--variable declaration
+emp_rec emp%rowtype;
+begin
+--open cursor
+open cur_emp;
+--fetch cursor
+loop
+fetch cur_emp into emp_rec;
+exit when cur_emp%notfound; --not found is a attribute
+dbms_output.put_line(emp_rec.ename||'  '||emp_rec.job||'  '||emp_rec.sal);
+end loop;
+close cur_emp;
+end;
+
+o/p:
+
+SMITH  CLERK  800
+ALLEN  SALESMAN  1600
+WARD  SALESMAN  1250
+JONES  MANAGER  5500
+MARTIN  SALESMAN  1250
+BLAKE  MANAGER  5500
+CLARK  MANAGER  5500
+SCOTT  ANALYST  3000
+KING  PRESIDENT  5000
+TURNER  SALESMAN  1500
+ADAMS  CLERK  1100
+JAMES  CLERK  950
+FORD  ANALYST  3000
+MILLER  CLERK  1300
+
+---------------------------
+for loop:
+
+declare cursor c1 is select * from emp;
+begin
+for r in c1
+loop
+dbms_output.put_line(r.ename||'  '||r.sal);
+end loop;
+end;
+/
+
+o/p:
+
+SMITH  800
+ALLEN  1600
+WARD  1250
+JONES  5500
+MARTIN  1250
+BLAKE  5500
+CLARK  5500
+SCOTT  3000
+KING  5000
+TURNER  1500
+ADAMS  1100
+JAMES  950
+FORD  3000
+MILLER  1300
+
+=====================
+Implicit cursor:
+
+declare 
+veno emp.empno%type;
+begin
+veno:=&empno;
+delete from emp where empno=veno;
+if sql%found then
+dbms_output.put_line('record deleted');
+else
+dbms_output.put_line('no such employee');
+end if;
+end;
+
+o/p:
+
+give value 5555
+
+no such employee
