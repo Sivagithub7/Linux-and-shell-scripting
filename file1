@@ -1,2 +1,5 @@
-one
-
+create procedure test_proc3(anyname  in varchar2)
+as
+begin
+dbms_output.put_line('Hi '||anyname);
+end;
