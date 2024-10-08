@@ -1,0 +1,349 @@
+1) Grep: search something
+svadlamuri@Varma:~$ ls
+bigfile  f1    file.tar  file1  images       names
+desktop  file  file.zip  file2  myscript.sh  newdir
+svadlamuri@Varma:~$ grep "hello" file
+hello
+
+2) netstat (network purpose)
+shows connections available in system
+
+3) Whoami: 
+system@Varma:~$ whoami
+system
+
+4) Who: complete information
+system@Varma:~$ who
+system   pts/1        2023-08-26 12:17
+
+5) soft link: Files that point to a file or directory in your system, but dont mirror the other files data
+
+system@Varma:~$ cat soft1
+cat: soft1: No such file or directory
+system@Varma:~$ cat >soft1
+one
+two
+three
+^C
+system@Varma:~$ cat soft1
+one
+two
+three
+
+system@Varma:~$ ln -s soft1 softlink
+system@Varma:~$ cat softlink
+one
+two
+three
+
+system@Varma:~$ rm soft1
+
+system@Varma:~$ cat softlink
+cat: softlink: No such file or directory
+
+
+>>Hard link: acts as acopy(mirrored) of the selected data.
+
+system@Varma:~$ cat>hard
+one
+two
+three
+^C
+system@Varma:~$ ln hard hardlink
+system@Varma:~$ cat hardlink
+one
+two
+three
+
+system@Varma:~$ rm hard
+
+system@Varma:~$ cat hardlink
+one
+two
+three
+ 
+6) cut: The cut command is a command-line utility that allows you to cut out sections 
+of a specified file or piped data and print the result to standard output. 
+(here -d =deliminator)
+ex:
+
+system@Varma:~$ cat>aaa
+terraform aws linux
+c c++ java
+python unix cloud
+^C
+
+system@Varma:~$ cut -d " " -f 1,3 aaa
+terraform linux
+c java
+python cloud
+
+7) sort: The sort command is a tool for sorting file contents and printing the result in standard output.
+
+ex:
+
+system@Varma:~$ cat aaa
+5
+1
+2
+3
+8
+9
+6
+system@Varma:~$ sort aaa
+1
+2
+3
+5
+6
+8
+9
+
+system@Varma:~$ cat>bbb
+3
+1
+2
+49
+5
+67
+7
+4
+^C
+system@Varma:~$ sort bbb
+1
+2
+3
+4
+49
+5
+67
+7
+system@Varma:~$ sort -n bbb (-n=numerical)
+1
+2
+3
+4
+5
+7
+49
+67
+system@Varma:~$ sort -nr bbb (r=reverse)
+67
+49
+7
+5
+4
+3
+2
+1
+system@Varma:~$
+
+8) piping (|) : want to display one line particularly
+
+9) vim: see the cursor
+i--insert
+
+jadakl|flkakldahlkadnlk
+
+I-- |hkabkjajljd
+df 
+a-- jdsljhj|le
+
+A-- jlhljhafjlahlj|
+
+10) top: shows live processing 
+
+11) htop: same like top but GUI is diff.
+
+12) ps aux: running os related processing
+ex: system@Varma:~$ ps aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.3 166920 12356 ?        Ss   14:20   0:00 /sbin/init
+root           2  0.0  0.0   2324  1260 ?        Sl   14:20   0:00 /init
+root           5  0.0  0.0   2352    80 ?        Sl   14:20   0:0 ..
+...
+
+13) Ping: send ICMP ECHO_REQUEST to network hosts.(out internet working or not)
+-ICMP ECHO_REQUEST: Internet control message protocol
+--Used to test the network layer of destination
+
+14) Traceroute: Traceroute is a network diagnostic tool used to track in real-time the pathway taken by a packet on an IP network from source to destination.
+--upto 30 intervels it will check.
+--* indicates we are not getting any response.
+ Traceroute google.com
+traceroute to google.com (172.217.167.206), 30 hops max, 60 byte packets
+ 1  Varma.mshome.net (172.17.144.1)  0.440 ms  0.391 ms  0.380 ms
+ 2  192.168.66.25 (192.168.66.25)  59.444 ms  59.437 ms  59.336 ms
+ 3  * * *
+ 4  * * *
+ 5  * * *
+ 6  * * *
+ 7  * * *
+ 8  * * *
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+
+14) mtr:  a network diagnostic tool.
+--combination of two commands ping and traceroute.
+
+mtr facebook.com
+                                                                         My traceroute  [v0.95]
+Varma (172.17.154.193) -> facebook.com (31.13.64.35)                                                                                           2023-09-27T10:10:48+0530
+Keys:  Help   Display mode   Restart statistics   Order of fields   quit
+                                                                                                                               Packets               Pings
+ Host                                                                                                                        Loss%   Snt   Last   Avg  Best  Wrst StDev
+ 1. Varma.mshome.net                                                                                                          0.0%    26    0.5   1.5   0.2  28.8   5.6
+ 2. 192.168.66.25                                                                                                             0.0%    26    5.5   8.4   3.6  30.4   7.3
+ 3. 192.0.0.1                                                                                                                 0.0%    26    8.2   9.4   6.6  18.8   2.6
+ 4. (waiting for reply)
+ 5. (waiting for reply)
+ 6. (waiting for reply)
+ 7. (waiting for reply)
+ 8. (waiting for reply)
+ 9. (waiting for reply)
+10. (waiting for reply)
+11. (waiting for reply)
+12. (waiting for reply)
+13. (waiting for reply)
+14. (waiting for reply)
+15. edge-star-mini-shv-02-ccu1.facebook.com                                                                                   0.0%    25   39.2  26.1  19.7  39.2   4.9
+
+15) Host:
+root@Varma:~/a# whatis host
+host (1)             - DNS lookup utility
+A DNS lookup, or DNS record lookup, is the process through which human-readable domain names (www.digicert.com) are translated into a computer-readable IP address (216.168. 246.55).
+
+root@Varma:~/a# host gmail.com
+gmail.com has address 142.250.193.197
+gmail.com has IPv6 address 2404:6800:4002:823::2005
+gmail.com mail is handled by 40 alt4.gmail-smtp-in.l.google.com.
+gmail.com mail is handled by 5 gmail-smtp-in.l.google.com.
+gmail.com mail is handled by 20 alt2.gmail-smtp-in.l.google.com.
+gmail.com mail is handled by 10 alt1.gmail-smtp-in.l.google.com.
+gmail.com mail is handled by 30 alt3.gmail-smtp-in.l.google.com.
+root@Varma:~/a#
+
+16) IP:
+root@Varma:~/a# whatis ip
+ip (7)               - Linux IPv4 protocol implementation
+ip (8)               - show / manipulate routing, network devices, interfaces and tunnels
+
+root@Varma:~/a# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1400 qdisc mq state UP group default qlen 1000
+    link/ether 00:15:5d:07:f4:1b brd ff:ff:ff:ff:ff:ff
+    inet 172.17.154.193/20 brd 172.17.159.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::215:5dff:fe07:f41b/64 scope link
+       valid_lft forever preferred_lft forever
+17) Whois: tells us domain name and domain status
+root@Varma:~/a# whois google.com
+   Domain Name: GOOGLE.COM
+   Registry Domain ID: 2138514_DOMAIN_COM-VRSN
+   Registrar WHOIS Server: whois.markmonitor.com
+   Registrar URL: http://www.markmonitor.com
+   Updated Date: 2019-09-09T15:39:04Z
+   Creation Date: 1997-09-15T04:00:00Z
+   Registry Expiry Date: 2028-09-14T04:00:00Z
+   Registrar: MarkMonitor Inc.
+   Registrar IANA ID: 292
+   Registrar Abuse Contact Email: abusecomplaints@markmonitor.com
+   Registrar Abuse Contact Phone: +1.2086851750
+   Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+   Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+   Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+   Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+   Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+   Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
+   Name Server: NS1.GOOGLE.COM
+   Name Server: NS2.GOOGLE.COM
+   Name Server: NS3.GOOGLE.COM
+   Name Server: NS4.GOOGLE.COM
+   DNSSEC: unsigned
+   URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of whois database: 2023-09-27T04:54:32Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+NOTICE: The expiration date displayed in this record is the date the
+registrar's sponsorship of the domain name registration in the registry is
+currently set to expire. This date does not necessarily reflect the expiration
+date of the domain ......................
+
+18) Nslookup:
+root@Varma:~/a# whatis nslookup
+nslookup (1)         - query Internet name servers interactively
+
+root@Varma:~/a# nslookup google.com
+Server:         172.17.144.1
+Address:        172.17.144.1#53
+
+Non-authoritative answer:
+Name:   google.com
+Address: 172.217.27.174
+Name:   google.com
+Address: 2404:6800:4002:80e::200e
+
+root@Varma:~/a# nslookup -type=a google.com
+Server:         172.17.144.1
+Address:        172.17.144.1#53
+
+Non-authoritative answer:
+Name:   google.com
+Address: 172.217.27.174
+
+19) wget :  
+root@Varma:~/a# whatis wget
+wget (1)             - The non-interactive network downloader.
+
+--download images through url
+
+feh url..
+image will be display
+
+--if url will long so need to be small 
+wget -O image.png url...
+
+20) ssh:
+root@Varma:~/a# whatis ssh
+ssh (1)              - OpenSSH remote login client
+
+21) Find files and directories:
+find file:
+
+root@Varma:~# pwd
+/root
+root@Varma:~# ls
+a  at  crontab  nohup.out  snap
+root@Varma:~# cd a
+root@Varma:~/a# ls
+cccc  read  shellfirst  variable
+root@Varma:~/a# cd ..
+root@Varma:~# find /root/a -name cccc
+/root/a/cccc
+

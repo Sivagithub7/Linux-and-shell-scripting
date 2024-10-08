@@ -1,0 +1,229 @@
+1) scp:
+root@Varma:~/a# whatis scp
+scp (1)              - OpenSSH secure file copy
+
+2) root@Varma:~/a# whatis uptime
+uptime (1)           - Tell how long the system has been running.
+
+root@Varma:~/a# uptime -h
+
+Usage:
+ uptime [options]
+
+Options:
+ -p, --pretty   show uptime in pretty format
+ -h, --help     display this help and exit
+ -s, --since    system up since
+ -V, --version  output version information and exit
+
+For more details see uptime(1).
+
+root@Varma:~/a# uptime -p
+up 1 hour, 41 minutes
+
+version:
+root@Varma:~/a# uptime -V
+uptime from procps-ng 3.3.17
+
+root@Varma:~/a# uptime -s
+2023-09-27 09:07:38
+
+3) nl:
+root@Varma:~/a# whatis nl
+nl (1)               - number lines of files
+
+ex: 1 and
+    2 am
+    ...
+like this numbers will display.
+
+4) Hostname:
+root@Varma:~/a# whatis hostname
+hostname (5)         - Local hostname configuration file
+hostname (1)         - show or set the system's host name
+hostname (7)         - hostname resolution description
+
+root@Varma:~/a# hostname
+Varma
+root@Varma:~/a# hostname -i  -- local host ip address
+127.0.1.1
+root@Varma:~/a# hostname -I  -- actual ip address
+172.17.154.193
+
+5) uname: 
+root@Varma:~/a# whatis uname
+uname (1)            - print system information
+root@Varma:~/a# uname
+Linux
+root@Varma:~/a# uname -r
+5.15.90.1-microsoft-standard-WSL2
+
+6) ps:
+root@Varma:~/a# whatis ps
+ps (1)               - report a snapshot of the current processes.
+
+7)Emacs
+● Emacs is Powerful editor.
+● Some people prefer vi, other emacs.
+● Either are great editors.
+● Use what feels comfortable to you.
+
+emacs [file] Edit file.
+C-<char> Ctrl while pressing <char>.
+M-<char> "Meta" key (alt key) while
+pressing <char>.
+M-<char> Esc, then type <char>
+
+Emacs Commands
+C-h Help
+C-x C-c Exit
+C-x C-s Save the file
+C-h t Built-in tutorial
+C-h k <key> Describe key
+
+Emacs Navigation
+C-p Previous line.
+C-n Next line.
+C-b Backward one character.
+C-f Forward one character.
+M-f Forward one word.
+M-b Backward one word.
+C-a Go to the beginning of the line.
+C-e Go to the end of the line.
+M-< Go to the beginning of the file.
+M-> Go to the end of the file.
+
+Emacs - Deleting Text
+C-d Delete a character.
+M-d Delete a word.
+
+Emacs - Copying, Pasting, and Undo
+C-k Kill (cut)
+C-y Yank (paste)
+C-x u Undo
+
+Emacs - Searching
+C-s Start a forward search.
+C-r Start a reverse search.
+
+Emacs - Repeating Commands
+C-u N <command> Repeat <command>
+N times.
+
+Summary
+● Emacs is more advanced than nano.
+● Emacs is an alternative to vi.
+
+C-h t Built-in tutorial
+
+---
+Emacs Reference
+Movement
+C-n Next line
+C-p Previous line
+C-f Move cursor forward one character
+C-b Move cursor backward one character
+M-f Forward one word
+M-b Backward one word
+C-a Move to beginning of line
+C-e Move to end of line
+M-a Move back to beginning of the sentence
+M-e Move back to end of the sentence
+M-< Go to the beginning of the file
+M-> Go to the end of the file
+M-g g N Go to line N
+Searching
+C-s Start a forward search.
+C-r Start a reverse search.
+Repeating Commands
+C-u {num} {command} Repeat {command} {num} times
+
+Deleting Text
+C-d Delete a character
+M-d Delete a word
+Copy/Paste
+C-k Kill (cut) the rest of the current line of text
+C-y Yank (or paste) from the previously killed text
+Undo
+C-x u Undo.
+Save and Quit
+C-x C-s Save the file
+C-x C-c Exit
+Help
+C-h Help
+C-h t Tutorial
+C-h k {key} Describe {key}
+
+Find and Replace
+M-% {old} {new} ! Substitute {new} for {old} in the entire document
+Legend
+M-x means “press and release the Escape key and then press the x key. “
+C-x means “press and hold the Control key and then press and release the x key.”
+
+
+8)sed:refer pdf
+note if we dont use -i then it will disply the o/p in screen but actual o/p cant change.
+ex:
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat ss
+kenny val
+benny vall
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ sed -i 's/kenny/lenny/g' ss
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat ss
+lenny val
+benny vall
+
+note: -i = insert
+g= global
+s= substitute
+
+>completely remove then we use 
+
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball doll
+cat bat
+toy boy
+toll doll
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ sed -i 's/doll//g' sss
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball
+cat bat
+toy boy
+toll
+
+to delete lines:
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball
+cat bat
+toy boy
+toll
+call bat
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ sed -i '/bat/d' sss
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball
+toy boy
+toll.
+
+9) who: 
+svadlamuri@LAPTOP-1BR3SJJG:~$ whatis who
+who (1)              - show who is logged on
+
+10) Last:
+svadlamuri@LAPTOP-1BR3SJJG:~$ whatis last
+last (1)             - show a listing of last logged in users
+
+> last | awk '{print$1}' | sort | uniq
+uniq: same name who is present
+
+11) w:
+svadlamuri@LAPTOP-1BR3SJJG:~$ whatis w
+w (1)                - Show who is logged on and what they are doing.
+
+12)id: 
+svadlamuri@LAPTOP-1BR3SJJG:~$ whatis id
+id (1)               - print real and effective user and group IDs
+
+ex:
+
+svadlamuri@LAPTOP-1BR3SJJG:~$ id
+uid=1000(svadlamuri) gid=1000(svadlamuri) groups=1000(svadlamuri),4(adm),20(dialout),24(cdrom),25(floppy),
+27(sudo),29(audio),30(dip),44(video),46(plugdev),116(netdev)

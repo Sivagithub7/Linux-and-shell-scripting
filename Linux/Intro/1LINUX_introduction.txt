@@ -1,0 +1,111 @@
+LINUX
+=======
+
+>>Linux: 
+
+> It was initially released by Linus Torvalds on September 17, 1991.
+> Linux is open source
+> It is like windows,mac,android,etc.
+> Linux is considered to be more secure than windows as it is less susceptible to viruses and malware.
+> It consists of 3 parts: Kernal, Shell and Programs.
+> An OS is software that enables communication b/w computer hardware and software.
+> Linux kernal is the core part of OS. It establish commuication b/w devices and software.
+ Process management
+ Memory management
+ Hardware device drivers
+ Filesystem drivers
+ Network management
+ Various other bits and pieces
+
+>>Imp things to remember in linux:
+
+> Linux has super user account called root.
+> Root is the most powerful account that can create, modify,delete accounts and make changes to system configurations files
+> Case sensitive
+> Avoid using spaces when creating files and directories.
+> Linux is mostly command line interface
+> Linux is very flexible as compared to other os.
+		
+>> Advantages: 
+
+> It is also used to perdorm to run desktop, servers and embedded systems.
+> Pen source: Its source code is easily available.
+> security
+> free
+> stability
+> performance
+> flexibility
+
+>> Disadvantages of Linux:
+
+>It is not very user-friendly. So, it may be confusing for beginners.
+> The commands in UNIX is much more difficult than commands in Windows MS-DOS and macOS
+
+
+> Around 600 + Linux Distributions are available and some of the popular Linux distributions are: 
+
+MX Linux
+Manjaro
+Linux Mint
+elementary
+Ubuntu
+Debian
+Solus
+Fedora
+openSUSE
+Deepin
+
+>> Kernel: Kernel is the core of the Linux based operating system.
+> It virtualizes the common hardware resources of the computer to provide each process with its virtual resources.
+
+>> Shell: 
+> It is a program that takes keyboard and gives OS to perform.
+>It is an interface to the kernel which hides the complexity of the kernel’s functions from the users.
+> It takes commands from the user and executes the kernel’s functions.
+
+>> Terminal:
+> (Tool) we can use to pass shell commands.
+
+>> Why Linux is cheaper than Windows?
+Linux is an open source software and some versions can be downloaded free, 
+whereas Windows is a closed source (premium) software with a paid subscription.
+
+>>Inside Linux
+
+ Kernel 
+o The core of the UNIX system. Loaded at system start up (boot). Memory-resident control 
+program. 
+o Manages the entire resources of the system, presenting them to you and every other user 
+as a coherent system. Provides service to user applications such as device management, 
+process scheduling, etc. 
+ 
+ Shell 
+o Whenever you login to a Unix system you are placed in a shell program. The shell's 
+prompt is usually visible at the cursor's position on your screen. To get your work done, 
+you enter commands at this prompt. 
+
+o Different users may use different shells. Initially, your system adminstrator will supply a 
+default shell, which can be overridden or changed. The most commonly available shells 
+are: 
+ Bourne shell (sh) 
+ C shell (csh) 
+ Korn shell (ksh) 
+ TC Shell (tcsh) 
+ Bourne Again Shell (bash) 
+o Each shell also includes its own programming language. Command files, called "shell 
+scripts" are used to accomplish a series of tasks. 
+
+ Utilities 
+o UNIX provides several hundred utility programs, often referred to as commands. 
+o Accomplish universal functions 
+ editing 
+ file maintenance 
+ printing 
+ sorting 
+ programming support 
+ online info etc. 
+o Modular: single functions can be grouped to perform more complex tasks
+
+>>What is virtual memory?
+Linux supports virtual memory, that is, using a disk as an extension of RAM so that the effective size of 
+usable memory grows correspondingly.
