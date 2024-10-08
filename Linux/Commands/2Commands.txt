@@ -2,8 +2,6 @@
 • “tee” command is used to store and view (both at the same
 time) the output of any command
 
-*refer pdf for  more info
-
 svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat > david
 hello
 ^C
@@ -35,8 +33,6 @@ svadlamuri@LAPTOP-1BR3SJJG:~/file1$
 2) AWK: filter cmd
 • awk is a utility/language designed for data extraction. Most of the time it is used to extract fields from a
 file or from an output
-
-* refer pdf
 
 ex:
 svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat > test
