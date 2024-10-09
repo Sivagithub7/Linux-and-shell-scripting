@@ -169,4 +169,148 @@ mtr facebook.com
                                                                          My traceroute  [v0.95]
 tom (xxxxxxxxxxxx3) -> facebook.com (xxxxxxxxxx35)                                                                                           2023-09-2xxxxxxxxxxxx0
 Keys:  Help   Display mode   Restart statistics   Order of fields   quit
-                                                                                                                               Packets   
+    Packets   
+
+8) sed:
+note if we dont use -i then it will disply the o/p in screen but actual o/p cant change.
+ex:
+bob@LAPTOP-1BR3SJJG:~/file1$ cat ss
+kenny val
+benny vall
+bob@LAPTOP-1BR3SJJG:~/file1$ sed -i 's/kenny/lenny/g' ss
+bob@LAPTOP-1BR3SJJG:~/file1$ cat ss
+lenny val
+benny vall
+
+note: -i = insert
+g= global
+s= substitute
+
+>completely remove then we use 
+
+bob@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball doll
+cat bat
+toy boy
+toll doll
+bob@LAPTOP-1BR3SJJG:~/file1$ sed -i 's/doll//g' sss
+bob@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball
+cat bat
+toy boy
+toll
+
+to delete lines:
+bob@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball
+cat bat
+toy boy
+toll
+call bat
+bob@LAPTOP-1BR3SJJG:~/file1$ sed -i '/bat/d' sss
+bob@LAPTOP-1BR3SJJG:~/file1$ cat sss
+ball
+toy boy
+toll.
+
+
+
+9) Emacs
+● Emacs is Powerful editor.
+● Some people prefer vi, other emacs.
+● Either are great editors.
+● Use what feels comfortable to you.
+
+emacs [file] Edit file.
+C-<char> Ctrl while pressing <char>.
+M-<char> "Meta" key (alt key) while
+pressing <char>.
+M-<char> Esc, then type <char>
+
+Emacs Commands
+C-h Help
+C-x C-c Exit
+C-x C-s Save the file
+C-h t Built-in tutorial
+C-h k <key> Describe key
+
+Emacs Navigation
+C-p Previous line.
+C-n Next line.
+C-b Backward one character.
+C-f Forward one character.
+M-f Forward one word.
+M-b Backward one word.
+C-a Go to the beginning of the line.
+C-e Go to the end of the line.
+M-< Go to the beginning of the file.
+M-> Go to the end of the file.
+
+Emacs - Deleting Text
+C-d Delete a character.
+M-d Delete a word.
+
+Emacs - Copying, Pasting, and Undo
+C-k Kill (cut)
+C-y Yank (paste)
+C-x u Undo
+
+Emacs - Searching
+C-s Start a forward search.
+C-r Start a reverse search.
+
+Emacs - Repeating Commands
+C-u N <command> Repeat <command>
+N times.
+
+Summary
+● Emacs is more advanced than nano.
+● Emacs is an alternative to vi.
+
+C-h t Built-in tutorial
+
+---
+Emacs Reference
+Movement
+C-n Next line
+C-p Previous line
+C-f Move cursor forward one character
+C-b Move cursor backward one character
+M-f Forward one word
+M-b Backward one word
+C-a Move to beginning of line
+C-e Move to end of line
+M-a Move back to beginning of the sentence
+M-e Move back to end of the sentence
+M-< Go to the beginning of the file
+M-> Go to the end of the file
+M-g g N Go to line N
+Searching
+C-s Start a forward search.
+C-r Start a reverse search.
+Repeating Commands
+C-u {num} {command} Repeat {command} {num} times
+
+Deleting Text
+C-d Delete a character
+M-d Delete a word
+Copy/Paste
+C-k Kill (cut) the rest of the current line of text
+C-y Yank (or paste) from the previously killed text
+Undo
+C-x u Undo.
+Save and Quit
+C-x C-s Save the file
+C-x C-c Exit
+Help
+C-h Help
+C-h t Tutorial
+C-h k {key} Describe {key}
+
+Find and Replace
+M-% {old} {new} ! Substitute {new} for {old} in the entire document
+Legend
+M-x means “press and release the Escape key and then press the x key. “
+C-x means “press and hold the Control key and then press and release the x key.”
+
+
