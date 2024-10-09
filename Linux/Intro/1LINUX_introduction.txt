@@ -1,8 +1,6 @@
 LINUX
 =======
 
->>Linux: 
-
 > It was initially released by Linus Torvalds on September 17, 1991.
 > Linux is open source
 > It is like windows,mac,android,etc.
