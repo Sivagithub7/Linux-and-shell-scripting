@@ -1,0 +1,12 @@
+Ctrl + C	Kill process running in the terminal.
+Ctrl + Z	Stop the current process. The process can be resumed in the foreground with fg or in the background with bg.
+Ctrl + W	Cut one word before the cursor and add it to the clipboard.
+Ctrl + U	Cut part of the line before the cursor and add it to the clipboard.
+Ctrl + K	Cut part of the line after the cursor and add it to the clipboard.
+Ctrl + Y	Paste from clipboard.
+Ctrl + R	Recall the last command that matches the provided characters.
+Ctrl + O	Run the previously recalled command.
+Ctrl + G	Exit command history without running a command.
+clear	Clear the terminal screen.
+!!	Run the last command again.
+exit	Log out of the current session.
