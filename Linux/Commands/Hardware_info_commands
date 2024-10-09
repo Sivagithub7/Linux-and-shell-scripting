@@ -1,7 +1,7 @@
 
 1) lscpu ---	See CPU information.
 
-root@Varma:~# lscpu
+~# lscpu
 Architecture:            x86_64
   CPU op-mode(s):        32-bit, 64-bit
   Address sizes:         39 bits physical, 48 bits virtual
@@ -15,38 +15,39 @@ Vendor ID:               GenuineIntel
     ..
     ..
 
+
 2) lsblk ---	See information about block devices.
 
-root@Varma:~# lsblk
+~# lsblk
 NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 sda    8:0    0 388.4M  1 disk
 sdb    8:16   0     1G  0 disk [SWAP]
 sdc    8:32   0     1T  0 disk /snap
-                               /mnt/wslg/distro
-                               /
-                               
+                               /mnt/wslg/distr
+
+
 3) lspci -tv ---	Show PCI devices (graphics card, network card, etc.) in a tree-like diagram.
 
-root@Varma:~# lspci -tv
--+-[e750:00]---00.0  Red Hat, Inc. Virtio file system
- +-[c591:00]---00.0  Microsoft Corporation Device 008e
- +-[01ad:00]---00.0  Red Hat, Inc. Virtio console
+~# lspci -tv
+-+-[e822:00]---00.0  Red Hat, Inc. Virtio file system
+ +-[c865:00]---00.0  Microsoft Corporation Device 008e
+ +-[09op:00]---00.0  Red Hat, Inc. Virtio console
  \-[0000:00]-
 
  
 4) lsusb -tv	--- Display USB devices in a tree-like diagram.
 
-root@Varma:~# lsusb -tv
+~# lsusb -tv
 /:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=vhci_hcd/8p, 5000M
-    ID 1d6b:0003 Linux Foundation 3.0 root hub
+    ID 1h8b:0001 Linux Foundation 1.0 root hub
 /:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=vhci_hcd/8p, 480M
-    ID 1d6b:0002 Linux Foundation 2.0 root hub
+    ID 1h8b:0002 Linux Foundation 2.0 root hub
 
 
 5) lshw	--- List hardware configuration information.
 
-root@Varma:~# lshw
-varma
+~# lshw
+bob
     description: Computer
     width: 64 bits
     capabilities: smp vsyscall32
@@ -69,14 +70,14 @@ varma
 
 6) cat /proc/cpuinfo	--- Show detailed CPU information.
 
-root@Varma:~# cat /proc/cpuinfo
+~# cat /proc/cpuinfo
 processor       : 0
 vendor_id       : GenuineIntel
 cpu family      : 6
 model           : 126
 model name      : Intel(R) Core(TM) i3-1005G1 CPU @ 1.20GHz
 stepping        : 5
-microcode       : 0xffffffff
+microcode       : xxxxxxxxx
 cpu MHz         : 1190.402
 cache size      : 4096 KB
 physical id     : 0
@@ -85,7 +86,7 @@ physical id     : 0
 
 7) cat /proc/meminfo	--- View detailed system memory information.
 
-root@Varma:~# cat /proc/meminfo
+~# cat /proc/meminfo
 MemTotal:        3894148 kB
 MemFree:         3034564 kB
 MemAvailable:    3200776 kB
@@ -96,6 +97,135 @@ Buffers:           26424 kB
 
 8) cat /proc/mounts	--- See mounted file systems.
 
-root@Varma:~# cat /proc/mounts
-none /usr/lib/modules/5.15.153.1-microsoft-standard-WSL2 overlay rw,nosuid,nodev,noatime,lowerdir=/modules,upperdir=/lib/modules/5.15.153.1-microsoft-standard-WSL2/rw/upper,workdir=/lib/modules/5.15.153.1-microsoft-standard-WSL2/rw/work 0 0
+~# cat /proc/mounts
+none /usr/lib/modules/5.15.153.1-microsoft-standard-WSL2 overlay rw,xxxxx,nodev,xxxxxx,lowerdir=/modules,upperdir=/lib/modules/5.15.153.1-microsoft-standard-WSL2/rw/upper,workdir=/lib/modules/5.15.153.1-microsoft-standard-WSL2/rw/work 0 0
 none /mnt/wsl tmpfs rw,relatime 0 0
+
+***
+9) Viewing resources(du,df,free command)
+
+df:report the available amount of disk space is used by file syatem.
+
+:~$ df
+Filesystem      1K-blocks      Used  Available Use% Mounted on
+none              1947016         4    1947012   1% /mnt/wsl
+none            263759868 143307372  120452496  55% /usr/lib/wsl/drivers
+none              1947016         0    1947016   0% /usr/lib/wsl/lib
+/dev/sdc       1055762868   1558328 1000501068   1% /
+none              1947016        92    1946924   1% /mnt/wslg
+rootfs            1943772      1936    1941836   1% /init
+none              1947016       884    1946132   1% /run
+none              1947016         0    1947016   0% /run/lock
+none              1947016         0    1947016   0% /run/shm
+none              1947016         0    1947016   0% /run/user
+tmpfs                4096         0       4096   0% /sys/fs/cgroup
+none              1947016        72    1946944   1% /mnt/wslg/versions.txt
+none              1947016        72    1946944   1% /mnt/wslg/doc
+drvfs           263759868 143307372  120452496  55% /mnt/c
+drvfs           205613052   7715876  197897176   4% /mnt/d
+drvfs           285695996    117732  285578264   1% /mnt/e
+drvfs           204799996    101584  204698412   1% /mnt/f
+snapfuse              128       128          0 100% /snap/bare/5
+snapfuse            54528     54528          0 100% /snap/snapd/18933
+snapfuse            74752     74752          0 100% /snap/core22/607
+
+For human understable:
+
+~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+none            1.9G  4.0K  1.9G   1% /mnt/wsl
+none            252G  137G  115G  55% /usr/lib/wsl/drivers
+none            1.9G     0  1.9G   0% /usr/lib/wsl/lib
+/dev/sdc       1007G  1.5G  955G   1% /
+none            1.9G   92K  1.9G   1% /mnt/wslg
+rootfs          1.9G  1.9M  1.9G   1% /init
+none            1.9G  884K  1.9G   1% /run
+none            1.9G     0  1.9G   0% /run/lock
+none            1.9G     0  1.9G   0% /run/shm
+none            1.9G     0  1.9G   0% /run/user
+tmpfs           4.0M     0  4.0M   0% /sys/fs/cgroup
+none            1.9G   72K  1.9G   1% /mnt/wslg/versions.txt
+none            1.9G   72K  1.9G   1% /mnt/wslg/doc
+drvfs           252G  137G  115G  55% /mnt/c
+drvfs           197G  7.4G  189G   4% /mnt/d
+drvfs           273G  115M  273G   1% /mnt/e
+drvfs           196G  100M  196G   1% /mnt/f
+snapfuse        128K  128K     0 100% /snap/bare/5
+snapfuse         54M   54M     0 100% /snap/snapd/18933
+
+
+du: estimate and display disk space used by files.
+
+~$ du
+4       ./images/pics
+8       ./images
+4       ./names/marley
+4       ./names/visa
+4       ./names/hasan
+16      ./names
+4       ./.local/share/nano
+8       ./.local/share
+12      ./.local
+20      ./desktop
+4       ./.cache
+4       ./.config/procps
+8       ./.config
+4       ./newdir
+124     .
+
+Human undersatable purpose -h:
+
+svadlamuri@Varma:~$ du -h
+4.0K    ./images/pics
+8.0K    ./images
+4.0K    ./names/marley
+4.0K    ./names/visa
+4.0K    ./names/hasan
+16K     ./names
+4.0K    ./.local/share/nano
+8.0K    ./.local/share
+12K     ./.local
+20K     ./desktop
+4.0K    ./.cache
+4.0K    ./.config/procps
+8.0K    ./.config
+4.0K    ./newdir
+124K    .
+
+See disc home  directory used o/p:
+
+svadlamuri@Varma:~$ du -sh
+124K
+here s=summary
+
+free: Display total amount of free and used physical and swap memory in the system.
+
+~$ free
+               total        used        free      shared  buff/cache   available
+Mem:         3894036      483404     2720060        3208      690572     3198256
+Swap:        1048576           0     1048576
+
+~$ free -m    (better to use)
+               total        used        free      shared  buff/cache   available
+Mem:            3802         471        2656           3         674        3123
+Swap:           1024           0        1024
+
+~$ free -g
+               total        used        free      shared  buff/cache   available
+Mem:               3           0           2           0           0           3
+Swap:              1           0           1
+
+10) sudo dmidecode	-- Show hardware information from the BIOS.
+
+root@Varma:~# sudo dmidecode
+# dmidecode 3.3
+Scanning /dev/mem for entry point.
+
+
+11) hdparm -i /dev/[device_name]	-- Display disk data information.
+
+12) hdparm -tT /dev/[device_name]	-- Conduct a read speed test on the device/disk.
+
+13) badblocks -s /dev/[device_name]	-- Test for unreadable blocks on the device/disk.
+
+14) fsck /dev/[device_name]	-- Run a disk check on an unmounted disk or partition.
