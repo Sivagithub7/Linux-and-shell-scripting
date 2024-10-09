@@ -1,0 +1,30 @@
+1) df -h	Check free and used space on mounted systems.
+df -i	Show free inodes on mounted file systems.
+
+2) fdisk -l	--Display disk partitions, sizes, and types with the command.
+
+3) du -ah	See disk usage for all files and directories.
+du -sh	Show disk usage of the current directory.
+
+4) mount	-- Show currently mounted file systems.
+
+root@tom:~# mount
+none on /usr/lib/modules/5.15.153.1-microsoft-standard-WSL2 type overlay (rw,xxxx,nodev,noatime,lowerdir=/modules,upperdir=/lib/modules/5.15.153.1-microsoft-standard-xxxxx/rw/upper,workdir=/lib/modules/5.15.153.1-microsoft-standard-WSL2/rw/xxxxx)
+none on /mnt/wsl type tmpfs (rw,relatime)
+drivers on /usr/lib/wsl/drivers type 9p (ro,nosuid,nodev,noatime,dirsync,aname=xxxxx;fmask=xxxx;dmask=xxxxx,mmap,access=client,msize=xxxx,trans=xxxxx,rfd=xxxxx,xxxxx=7)
+/dev/sdc on / type xxxxxx (rw,relatime,discard,errors=remount-ro,data=ordered)
+
+5) findmnt	-- Display target mount point for all file systems.
+
+root@tom:~# findmnt
+TARGET                           SOURCE        FSTYPE        OPTIONS
+/                                /dev/sdc      ext4          rw,relatime,discard,errors=remount-ro,data=ordered
+├─/usr/lib/modules/5.15.153.1-microsoft-standard-WSL2
+│                                none          overlay       rw,nosuid,nodev,xxxxx,xxxxx=/modules,upperdir=/lib/modules/5.15.153.1-microsoft-standard-WSL2/rw/xxxx
+├─/mnt/wsl                       none          tmpfs         rw,relatime
+├─/usr/lib/wsl/drivers           drivers       9p            ro,nosuid,nodev,xxxxx,dirsync,aname=drivers;fmask=xxxxx;dmask=xxxx,mmap,access=client,msize=65536,trans=xxxxx,r
+├─/mnt/wslg                      none          tmpfs         rw,relatime
+│ ├─/mnt/wslg/xxxxx             /dev/sdc      ext4          ro,relatime,xxxxx,errors=remount-ro,data=xxxxx
+
+
+6) mount [device_path] [mount_point]	-- Mount a device.
