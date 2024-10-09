@@ -1,0 +1,318 @@
+1) mkdir [directory_name]	-- Create a new directory.
+
+> showed in blue colour.
+
+~$ mkdir d
+
+~$ ls -lrt
+total 20
+-rw-r--r-- 1 bob bob   12 Jul 17 10:56 file1
+-rw-r--r-- 1 bob bob   27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file2
+drwxr-xr-x 2 bob bob 4096 Jul 17 11:38 d  -- here directory created
+
+> bob@tom:~$ mkdir images
+bob@tom:~$ ls -lrt
+total 24
+-rw-r--r-- 1 bob bob   27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file2
+drwxr-xr-x 2 bob bob 4096 Jul 17 11:38 d
+-rw-r--r-- 1 bob bob   10 Jul 17 11:40 file1
+drwxr-xr-x 2 bob bob 4096 Jul 17 11:50 images
+
+> bob@tom:~$ mkdir images/pics
+bob@tom:~$ cd images
+bob@tom:~/images$ ls -lrt
+total 4
+drwxr-xr-x 2 bob bob 4096 Jul 17 11:51 pics
+
+> bob@tom:~/images$ cd ..
+bob@tom:~$ mkdir -p names/{marley,hasan,visa} (here -p is parent)
+bob@tom:~$ cd names
+bob@tom:~/names$ ls -lrt
+total 12
+drwxr-xr-x 2 bob bob 4096 Jul 17 11:53 marley
+drwxr-xr-x 2 bob bob 4096 Jul 17 11:53 hasan
+drwxr-xr-x 2 bob bob 4096 Jul 17 11:53 visa
+
+2) RMDIR : remove specified directory and it must should be empty.
+
+> bob@tom:~$ rmdir d
+bob@tom:~$ ls -lrt
+total 24
+-rw-r--r-- 1 bob bob   27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file2
+-rw-r--r-- 1 bob bob   10 Jul 17 11:40 file1
+drwxr-xr-x 3 bob bob 4096 Jul 17 11:51 images
+drwxr-xr-x 5 bob bob 4096 Jul 17 12:02 names
+
+> bob@tom:~$ mkdir -p d/man
+
+bob@tom:~$ ls -lrt
+total 28
+-rw-r--r-- 1 bob bob   27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file2
+-rw-r--r-- 1 bob bob   10 Jul 17 11:40 file1
+drwxr-xr-x 3 bob bob 4096 Jul 17 11:51 images
+drwxr-xr-x 5 bob bob 4096 Jul 17 12:02 names
+drwxr-xr-x 3 bob bob 4096 Jul 17 12:04 d
+
+bob@tom:~$ cd d
+
+bob@tom:~/d$ ls -lrt
+total 4
+drwxr-xr-x 2 bob bob 4096 Jul 17 12:04 man
+bob@tom:~/d$ cd ..
+
+bob@tom:~$ rmdir d
+rmdir: failed to remove 'd': Directory not empty
+
+bob@tom:~$ cd d
+
+bob@tom:~/d$ rmdir man
+
+bob@tom:~/d$ ls -lrt
+total 0
+
+bob@tom:~/d$ cd ..
+
+bob@tom:~$ rmdir d
+
+bob@tom:~$ ls -lrt
+total 24
+-rw-r--r-- 1 bob bob   27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file2
+-rw-r--r-- 1 bob bob   10 Jul 17 11:40 file1
+drwxr-xr-x 3 bob bob 4096 Jul 17 11:51 images
+drwxr-xr-x 5 bob bob 4096 Jul 17 12:02 names
+
+> bob@tom:~$ ls -lrt
+total 28
+-rw-r--r-- 1 bob bob   27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file2
+-rw-r--r-- 1 bob bob   10 Jul 17 11:40 file1
+drwxr-xr-x 3 bob bob 4096 Jul 17 11:51 images
+drwxr-xr-x 5 bob bob 4096 Jul 17 12:02 names
+drwxr-xr-x 3 bob bob 4096 Jul 17 12:07 a
+
+bob@tom:~$ rmdir -pv a/b/c/d
+rmdir: removing directory, 'a/b/c/d'
+rmdir: removing directory, 'a/b/c'
+rmdir: removing directory, 'a/b'
+rmdir: removing directory, 'a'
+
+3) rm [file_name]	Remove a file.
+
+> svadlamuri@Varma:~$ cat >ff
+
+svadlamuri@Varma:~$ rm ff
+
+svadlamuri@Varma:~$ ls -lrt
+total 24
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+
+rm -r [directory_name]	-- Remove a directory recursively.
+
+rm -rf [directory_name]	-- Recursively remove a directory without requiring confirmation.
+
+4) cp [source_file] [destination_file]	Copy the contents of one file to another file using the cp command.
+
+cp -r [source_directory] [destination_directory]	Recursively copy a directory to a second directory.
+
+>svadlamuri@Varma:~$ cp f ff
+
+svadlamuri@Varma:~$ ls -lrt
+total 28
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 svadlamuri svadlamuri   10 Jul 17 11:40 file1
+drwxr-xr-x 3 svadlamuri svadlamuri 4096 Jul 17 11:51 images
+drwxr-xr-x 5 svadlamuri svadlamuri 4096 Jul 17 12:02 names
+-rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 12:15 ff
+
+svadlamuri@Varma:~$ cat ff
+welcome
+hello
+ravi
+suresh
+
+
+5) mv [source_file] [destination_file]	Move or rename files or directories.
+
+> svadlamuri@Varma:~$ cat f
+welcome
+hello
+ravi
+suresh
+
+svadlamuri@Varma:~$ cat >ff
+ex
+
+svadlamuri@Varma:~$ cat ff
+ex
+
+svadlamuri@Varma:~$ mv f ff
+svadlamuri@Varma:~$ cat ff
+welcome
+hello
+ravi
+suresh
+
+svadlamuri@Varma:~$ cat f
+cat: f: No such file or directory
+
+svadlamuri@Varma:~$ ls
+ff  file  file1  file2  images  names
+
+svadlamuri@Varma:~$ mv ff f
+
+svadlamuri@Varma:~$ cat f
+welcome
+hello
+ravi
+suresh
+
+
+6) ln -s [path]/[file_name] [link_name]	Create a symbolic link to a file.
+
+svadlamuri@Varma:~$ pwd
+/home/svadlamuri
+svadlamuri@Varma:~$ ls
+bb  job  job.txt  q  shell  tee  w
+svadlamuri@Varma:~$ ln -s /home/svadlamuri/job jobmela.com
+svadlamuri@Varma:~$ ls
+bb  job  job.txt  jobmela.com  q  shell  tee  w
+
+
+7) touch [file_name]	Create a new file using touch.
+-- Create empty files and change time stamp of created file.
+note: if file already exists then we create any file with that existing file name Touch can not over ride  it updates time stamp of file 
+
+svadlamuri@Varma:~$ mkdir desktop
+svadlamuri@Varma:~$ ls
+bigfile  desktop  f1  file  file1  file2  images  names
+svadlamuri@Varma:~$ cd desktop
+svadlamuri@Varma:~/desktop$ touch file1.txt
+svadlamuri@Varma:~/desktop$ cat >file2.txt
+Balu
+Ramesh
+svadlamuri@Varma:~/desktop$ ls
+file1.txt  file2.txt
+svadlamuri@Varma:~/desktop$ ls -lrt
+total 4
+-rw-r--r-- 1 svadlamuri svadlamuri  0 Jul 21 10:17 file1.txt
+-rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 21 10:17 file2.txt
+
+change time stamp on file1.txt:
+
+svadlamuri@Varma:~/desktop$ touch file1.txt
+svadlamuri@Varma:~/desktop$ ls -lrt
+total 4
+-rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 21 10:17 file2.txt
+-rw-r--r-- 1 svadlamuri svadlamuri  0 Jul 21 10:19 file1.txt
+
+Create more files :
+
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ touch abc{1..5}.xml
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -lrt
+total 0
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 21 11:51 f1
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:24 free
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc1.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc2.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc3.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc4.xml
+-rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc5.xml
+
+
+7) cat [file_name]	Show the contents of a file.
+cat [source_file] >> [destination_file]	Append file contents to another file.
+
+Create new file and write the content and ctrl+d to save the content into file.
+note: if file is already present, after we do cat file then it will over ride.
+
+> svadlamuri@Varma:~$ cat > file1
+ravi
+suresh
+
+> svadlamuri@Varma:~$ cat file1
+ravi
+suresh
+
+>overridden happens :
+-------------------
+> svadlamuri@Varma:~$ cat >file1
+bob
+smith
+
+> svadlamuri@Varma:~$ cat file1
+bob
+smith
+
+>svadlamuri@Varma:~$ cat >file2
+welcome
+
+> svadlamuri@Varma:~$ ls file2
+file2
+
+> svadlamuri@Varma:~$ cat file2
+welcome
+
+> svadlamuri@Varma:~$ cat >>file2
+hello
+
+> svadlamuri@Varma:~$ cat file2
+welcome
+hello
+
+> svadlamuri@Varma:~$ cat -n file2
+     1  welcome
+     2  hello
+	 
+> concatination:
+svadlamuri@Varma:~$ cat file2 file1>f
+svadlamuri@Varma:~$ cat f
+welcome
+hello
+ravi
+suresh
+
+> Merge:
+svadlamuri@Varma:~$ cat file1 file2>file merge
+svadlamuri@Varma:~$ cat file
+ravi
+suresh
+welcome
+hello
+
+
+8) head [file_name]	Show the first ten lines of a file.
+
+tail [file_name]	Show the last ten lines of a file with the tail command.
+more [file_name]	Display contents of a file page by page.
+less [file_name]	Show the contents of a file with navigation using the less command.
+nano [file_name]	Open or create a file using the nano text editor.
+vi [file_name]
+vim [file_name]	Open or create a file using the Vi/Vim text editor.
+gpg -c [file_name]	Encrypt a file.
+gpg [file_name].gpg	Decrypt an encrypted .gpg file.
+wc -w [file_name]	Show the number of words, lines, and bytes in a file using wc.
+ls | xargs wc	List the number of lines/words/characters in each file in a directory with the xargs command.
+cut -d [delimiter] [file_name]	Cut a section of a file and print the result to standard output.
+[data] | cut -d [delimiter]	Cut a section of piped data and print the result to standard output.
+shred -u [file_name]	Overwrite a file to prevent its recovery, then delete it.
+diff [first_file] [second_file]	Compare two files and display differences.
+source [file_name]	Read and execute the file content in the current shell.
+[command] | tee [file_name] >/dev/null	Store the command output in a file and skip the terminal output.
