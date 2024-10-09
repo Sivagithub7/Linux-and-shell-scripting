@@ -77,3 +77,12 @@ less
 $ unset PAGER
 $ echo $PAGER
 $
+
+
+let "[variable_name]=[value]"	---Assign an integer value to a variable.
+export [variable_name]	  ---- Export a Bash variable.
+declare [variable-name]= "[value]"	--- Declare a Bash variable.
+set	--- List the names of all the shell variables and functions.
+unset [variable_name]	---Remove an environment variable.
+echo $[variable-name]	--- Display the value of a variable.
+
