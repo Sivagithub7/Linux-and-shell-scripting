@@ -84,4 +84,18 @@ physical id     : 0
 ...
 
 7) cat /proc/meminfo	--- View detailed system memory information.
-cat /proc/mounts	--- See mounted file systems.
+
+root@Varma:~# cat /proc/meminfo
+MemTotal:        3894148 kB
+MemFree:         3034564 kB
+MemAvailable:    3200776 kB
+Buffers:           26424 kB
+..
+..
+
+
+8) cat /proc/mounts	--- See mounted file systems.
+
+root@Varma:~# cat /proc/mounts
+none /usr/lib/modules/5.15.153.1-microsoft-standard-WSL2 overlay rw,nosuid,nodev,noatime,lowerdir=/modules,upperdir=/lib/modules/5.15.153.1-microsoft-standard-WSL2/rw/upper,workdir=/lib/modules/5.15.153.1-microsoft-standard-WSL2/rw/work 0 0
+none /mnt/wsl tmpfs rw,relatime 0 0
