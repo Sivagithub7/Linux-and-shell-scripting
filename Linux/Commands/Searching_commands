@@ -23,6 +23,30 @@ Permission denied
 so add sudo
 ~# sudo find / -name cccc  
 
+bob@tom:~$ pwd
+/home/bob
+bob@tom:~$ ls
+bigfile  f1    file1  images       names
+desktop  file  file2  myscript.sh  newdir
+
+bob@tom:~$ find /home/bob -name file
+/home/bob/file
+
+bob@tom:~$ find /home/bob -name file.*
+
+bob@tom:~$ find /home/bob -name myscript.*
+/home/bob/desktop/myscript.sh
+/home/bob/myscript.sh
+
+bob@tom:~$ find /home/bob -name *.txt
+/home/bob/desktop/file2.txt
+/home/bob/desktop/file1.txt
+
+bob@tom:~$ find /home/bob/ -mtime .1
+/home/bob/desktop
+/home/bob/desktop/myscript.sh
+/home/bob/.motd_shown
+
 find [path] -size [+100M]	-- See files and directories larger than a specified size in a directory.
 
 
@@ -67,12 +91,12 @@ chai swai
 mai kai
 sai tai
 ^C
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ awk '{print $1}' test
+bob@LAPTOP-1BR3SJJG:~/file1$ awk '{print $1}' test
 vai
 chai
 mai
 sai
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ awk '{print $2}' test
+bob@LAPTOP-1BR3SJJG:~/file1$ awk '{print $2}' test
 bye
 swai
 kai
