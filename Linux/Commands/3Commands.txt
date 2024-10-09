@@ -329,11 +329,8 @@ image will be display
 --if url will long so need to be small 
 wget -O image.png url...
 
-20) ssh:
-root@Varma:~/a# whatis ssh
-ssh (1)              - OpenSSH remote login client
 
-21) Find files and directories:
+20) Find files and directories:
 find file:
 
 root@Varma:~# pwd
