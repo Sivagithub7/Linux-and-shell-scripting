@@ -1,0 +1,110 @@
+1) uname -r 	--Show system information via uname command.
+uname -a 	--See kernel release information.
+
+root@tom:~/a# whatis uname
+uname (1)            - print system information
+root@tom:~/a# uname
+Linux
+root@tom:~/a# uname -r
+5.15.90.1-microsoft-standard-WSL2
+
+
+2) uptime --	Display system uptime, including the load average.
+
+root@tom:~/a# whatis uptime
+uptime (1)           - Tell how long the system has been running.
+
+root@tom:~/a# uptime -h
+
+Usage:
+ uptime [options]
+
+Options:
+ -p, --pretty   show uptime in pretty format
+ -h, --help     display this help and exit
+ -s, --since    system up since
+ -V, --version  output version information and exit
+
+For more details see uptime(1).
+
+root@tom:~/a# uptime -p
+up 1 hour, 41 minutes
+
+version:
+root@tom:~/a# uptime -V
+uptime from procps-ng 3.3.17
+
+root@tom:~/a# uptime -s
+2023-09-27 09:07:38
+
+
+3) hostname	-- View system hostname.
+hostname -i 	Show the IP address of the system.
+
+root@tom:~/a# whatis hostname
+hostname (5)         - Local hostname configuration file
+hostname (1)         - show or set the system's host name
+hostname (7)         - hostname resolution description
+
+root@tom:~/a# hostname
+tom
+root@tom:~/a# hostname -i  -- local host ip address
+127.0.1.1
+root@tom:~/a# hostname -I  -- actual ip address
+172.17.154.193
+
+
+4) last -- reboot 	List system reboot history.
+
+root@tom:~# last
+reboot   system boot  5.15.153.1-micro Wed Oct  9 17:12   still running
+root     pts/1                         Wed Oct  9 17:12 - crash  (-00:00)
+root     pts/1                         Wed Oct  9 14:24 - 17:12  (02:47)
+reboot   system boot  5.15.153.1-micro Wed Oct  9 14:24   still running
+root     pts/1                         Tue Oct  8 17:20 - crash  (21:04)
+reboot   system boot  5.15.153.1-micro Tue Oct  8 17:20   still running
+root     pts/1                         Thu Sep  5 12:30 - crash (33+04:49)
+reboot   system boot  5.15.153.1-micro Thu Sep  5 12:30   still running
+
+
+5) date	-- See current time and date.
+
+root@tom:~# date
+Wed Oct  9 18:31:45 IST 2024
+
+6) timedatectl --	Query and change the system clock.
+root@tom:~# timedatectl
+               Local time: Wed 2024-10-09 18:31:51 IST
+           Universal time: Wed 2024-10-09 13:01:51 UTC
+                 RTC time: Wed 2024-10-09 13:01:51
+                Time zone: Asia/Calcutta (IST, +0530)
+System clock synchronized: yes
+              NTP service: inactive
+          RTC in local TZ: no
+
+7) cal	--Show current calendar (month and day).
+
+
+8) w	-- List logged-in users.
+
+root@tom:~# w
+ 18:33:34 up  4:09,  0 users,  load average: 0.11, 0.06, 0.05
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+
+
+9) whoami	-- See which user you are using.
+
+root@tom:~# whoami
+root
+
+
+10) finger [user_name]	Show information about a particular user.
+
+11) ulimit [flags] [limit]	View or limit system resource amounts.
+
+12) shutdown [hh:mm]	-- Schedule a system shutdown.
+shutdown now	Shut down the system immediately.
+
+13) modprobe [module_name]	-- Add a new kernel module.
+
+14) dmesg--	Show bootup messages.
