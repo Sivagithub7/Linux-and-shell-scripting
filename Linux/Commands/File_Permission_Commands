@@ -1,0 +1,89 @@
+chmod 777 [file_name]	Assign read, write, and execute file permission to everyone (rwxrwxrwx).
+chmod 755 [file_name]	Give read, write, and execute permission to owner, and read and execute permission to group and others (rwxr-xr-x).
+chmod 766 [file_name]	Assign full permission to the owner, and read and write permission to the group and others (rwxrw-rw-).
+chown [user_name] [file_name]	Change the ownership of a file with chown command.
+chown [user_name]:[group_name] [file_name]	Change the owner and group ownership of a file.
+
+
+Chmod: (file permissions,symbolic permissions)
+- Chmod(change mod) is change the user/group permission to access file.
+
+bob@tom:~$ ls -l
+total 48
+-rw-r--r-- 1 bob bob 14210 Jul 20 12:51 bigfile
+drwxr-xr-x 2 bob bob  4096 Jul 21 10:45 desktop
+-rw-r--r-- 1 bob bob    27 Jul 17 11:26 f1
+-rw-r--r-- 1 bob bob    27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob    10 Jul 17 11:40 file1
+-rw-r--r-- 1 bob bob    27 Jul 17 11:27 file2
+drwxr-xr-x 3 bob bob  4096 Jul 17 11:51 images
+drwxr-xr-x 5 bob bob  4096 Jul 17 12:02 names
+drwxr-xr-x 2 bob bob  4096 Jul 21 10:46 newdir
+
+rrw - rw --x
+
+rrw (owner or user)
+rw (group)
+x(others)
+
+note: 
+r -- Read
+w --write
+x -- execute
+
+bob@tom:~$ ls -l file
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file
+
+if we want to add or remove permissions:
+bob@tom:~$ chmod o+w file -(here o=others ,+ add, w=write permission)
+bob@tom:~$ ls -l file
+-rw-r--rw- 1 bob bob 27 Jul 17 11:27 file
+
+bob@tom:~$ chmod o-w file
+bob@tom:~$ ls -l file
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file
+
+bob@tom:~$ chmod ug=wrx file (here u=user or owner)
+bob@tom:~$ ls -l file
+-rwxrwxr-- 1 bob bob 27 Jul 17 11:27 file
+
+bob@tom:~$ chmod a-rwx file
+bob@tom:~$ ls -l file
+---------- 1 bob bob 27 Jul 17 11:27 file
+
+bob@tom:~$ chmod ugo=rw file
+bob@tom:~$ ls -l
+-rw-rw-rw- 1 bob bob    27 Jul 17 11:27 file
+
+> r,w,x permissions  	binary		octal
+
+---						000			0
+--x						001			1
+-w-						010			2
+-wx						011			3
+r--						100			4
+r-x						101			5
+rw-						110			6
+rwx						111			7
+
+bob@tom:~$ ls -l file
+-rw-rw-rw- 1 bob bob 27 Jul 17 11:27 file
+bob@tom:~$ chmod 001 file
+bob@tom:~$ ls -l file
+---------x 1 bob bob 27 Jul 17 11:27 file
+bob@tom:~$ chmod u+110 file
+chmod: invalid mode: ‘u+110’
+Try 'chmod --help' for more information.
+bob@tom:~$ chmod 111 file
+bob@tom:~$ ls -l file
+---x--x--x 1 bob bob 27 Jul 17 11:27 file
+bob@tom:~$ chmod 5 file
+bob@tom:~$ ls -l file
+-------r-x 1 bob bob 27 Jul 17 11:27 file
+
+bob@tom:~$ chmod 755 file
+bob@tom:~$ ls -l file
+-rwxr-xr-x 1 bob bob 27 Jul 17 11:27 file
+bob@tom:~$ chmod 766 file
+bob@tom:~$ ls -l file
+-rwxrw-rw- 1 bob bob 27 Jul 17 11:27 file
