@@ -1,0 +1,133 @@
+1) ps	List active processes.
+root@tom:~# ps
+    PID TTY          TIME CMD
+     50 pts/0    00:00:00 bash
+   5427 pts/0    00:00:00 ps
+
+process running:
+root@tom:~# ps -aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  1.0  0.2 165784 11344 ?        Ss   17:11   0:14 /sbin/init
+root           2  0.0  0.0   2616  1444 ?        Sl   17:11   0:00 /init
+root           9  0.0  0.0   2616     4 ?        Sl   17:12   0:00 plan9 --control-socket 6 --log-level 4 --server-fd 7 --pipe-fd 9 --log-truncate
+root          48  0.0  0.0   2620   124 ?        Ss   17:12   0:00 /init
+root          49  0.0  0.0   2620   128 ?        R    17:12   0:00 /init
+root          50  0.0  0.1   6080  5136 pts/0    Ss   17:12   0:00 -bash
+root          51  0.0  0.1   7484  4668 pts/1    Ss   17:12   0:00 /bin/login -f
+
+2) pstree	-- Show processes ifn a tree-like diagram.
+
+root@tom:~# pstree
+systemd─┬─2*[agetty]
+        ├─atd
+        ├─cron
+        ├─dbus-daemon
+        ├─init-systemd(Ub─┬─SessionLeader───Relay(50)───bash───pstree
+        │                 ├─init───{init}
+        │                 ├─login───bash
+        │                 └─{init-systemd(Ub}
+        ├─networkd-dispat
+        ├─rsyslogd───3*[{rsyslogd}]
+        ├─snapd───9*[{snapd}]
+        ├─8*[snapfuse]
+        ├─subiquity-serve───python3.10─┬─python3
+        │                              └─4*[{python3.10}]
+        ├─systemd-journal
+        ├─systemd-logind
+        ├─systemd-resolve
+        ├─systemd-udevd
+        └─unattended-upgr───{unattended-upgr}
+
+
+3) pmap	-- Display a memory usage map of processes.
+
+root@tom:~# pmap
+
+Usage:
+ pmap [options] PID [PID ...]
+
+Options:
+ -x, --extended              show details
+ -X                          show even more details
+            WARNING: format changes according to /proc/PID/smaps
+ -XX                         show everything the kernel provides
+ -c, --read-rc               read the default rc
+ -C, --read-rc-from=<file>   read the rc from file
+ -n, --create-rc             create new default rc
+ -N, --create-rc-to=<file>   create new rc to file
+            NOTE: pid arguments are not allowed with -n, -N
+ -d, --device                show the device format
+ -q, --quiet                 do not display header and footer
+ -p, --show-path             show path in the mapping
+ -A, --range=<low>[,<high>]  limit results to the given range
+
+
+4) top	-- See all running processes.
+
+top - 18:19:38 up  3:55,  0 users,  load average: 0.14, 0.07, 0.06
+Tasks:  33 total,   1 running,  32 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   3802.9 total,   3175.7 free,    464.6 used,    162.6 buff/cache
+MiB Swap:   1024.0 total,   1024.0 free,      0.0 used.   3142.8 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 root      20   0  165784  11348   8328 S   0.0   0.3   0:31.13 systemd
+      2 root      20   0    2616   1444   1320 S   0.0   0.0   0:00.11 init-systemd(Ub
+      9 root      20   0    2616      4      0 S   0.0   0.0   0:00.04 init
+     48 root      20   0    2620    124      0 S   0.0   0.0   0:00.00 SessionLeader
+     49 root      20   0    2620    128      0 S   0.0   0.0   0:00.01 Relay(50)
+     50 root      20   0    6080   5140   3444 S   0.0   0.1   0:00.86 bash
+     51 root      20   0    7484   4668   3784 S   0.0   0.1   0:00.40 login
+    106 root      20   0    6124   4952   3376 S   0.0   0.1   0:01.08 bash
+    113 root      19  -1   31296  11548  10548 S   0.0   0.3   0:04.99 systemd-journal
+
+
+5) htop	--Interactive and colorful process viewer.
+
+
+6) kill [process_id]	--Terminate a Linux process under a given ID.
+
+Kill active process ID or name.
+
+bob@tom:~$ ps -aux  -- it show all the processers
+bob@tom:~$ kill 3467
+
+pkill [process_name] --	Terminate a process under a specific name.
+killall [label]	-- Terminate all processes with a given label.
+
+
+7) prgrep [keyword]--	List processes based on the provided keyword.
+
+8) pidof [process_name]	Show the PID of a process.
+
+9) bg	-- List and resume stopped jobs in the background.
+
+10) fg	-- Bring the most recently suspended job to the foreground.
+fg [job]	Bring a particular job to the foreground.
+
+11) lsof	-- List files opened by running processes with lsof command.
+
+12) trap "[commands]" [signal]	-- Catch a system error signal in a shell script. Executes provided commands when the signal is caught.
+
+13) wait	-- Pause the terminal or a Bash script until a running process is completed.
+
+14) nohup [command] &	Run a Linux process in the background.
+nohup command [options] &
+`command`: Specifies the command or script that you want to execute.
+`[options]`: Optional arguments or flags that modify the behavior of the command.
+`&`: Placing an ampersand (&) at the end of the command instructs the shell to run the command in the background.
+
+root@tom:~# nohup bash -c 'date && ls'
+nohup: ignoring input and appending output to 'nohup.out'
+root@tom:~# cat nohup.out
+bash: line 1: cal: command not found
+Wed Oct  9 18:24:46 IST 2024
+a
+at
+b
+ball
+crontab
+names
+nohup.out
+shell
+snap
