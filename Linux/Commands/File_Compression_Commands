@@ -1,0 +1,92 @@
+tar: used to create maintain,modify and extract files which are kite in tar formats.
+
+tar cf [archive.tar] [file/directory]	-- Archive an existing file or directory.
+tar xf [archive.tar]	-- Extract an archived file.
+tar czf [archive.tar.gz]	-- Create a .gz compressed tar archive.
+gzip [file_name]
+gunzip [file_name.gz]-- Compress or decompress .gz files.
+bzip2 [file_name]
+bunzip2 [file_name.bz2]	-- Compress or decompress .bz2 files.
+
+bob@tom:~$ tar -cvf file.tar file
+file
+
+here :
+c=creating File
+v=used to display progress
+f=allow you specify file name.
+
+bob@tom:~$ zip file.zip file
+Command 'zip' not found, but can be installed with:
+sudo apt install zip
+bob@tom:~$ sudo apt-get install zip
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  unzip
+The following NEW packages will be installed:
+  unzip zip
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 350 kB of archives.
+After this operation, 929 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 unzip amd64 6.0-26ubuntu3.1 [174 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 zip amd64 3.0-12build2 [176 kB]
+Fetched 350 kB in 1s (244 kB/s)
+Selecting previously unselected package unzip.
+(Reading database ... 24137 files and directories currently installed.)
+Preparing to unpack .../unzip_6.0-26ubuntu3.1_amd64.deb ...
+Unpacking unzip (6.0-26ubuntu3.1) ...
+Selecting previously unselected package zip.
+Preparing to unpack .../zip_3.0-12build2_amd64.deb ...
+Unpacking zip (3.0-12build2) ...
+Setting up unzip (6.0-26ubuntu3.1) ...
+Setting up zip (3.0-12build2) ...
+Processing triggers for man-db (2.10.2-1) ...
+bob@tom:~$ zip file.zip file
+  adding: file (stored 0%)
+  
+bob@tom:~$ ls
+bigfile  f1    file.tar  file1  images       names
+desktop  file  file.zip  file2  myscript.sh  newdir
+bob@tom:~$ rm file.tar
+bob@tom:~$ ls
+bigfile  f1    file.zip  file2   myscript.sh  newdir
+desktop  file  file1     images  names
+bob@tom:~$ tar -cvf file.tar file
+file
+bob@tom:~$ ls
+bigfile  f1    file.tar  file1  images       names
+desktop  file  file.zip  file2  myscript.sh  newdir
+bob@tom:~$ unzip file.zip file
+Archive:  file.zip
+replace file? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
+ extracting: file
+ 
+bob@tom:~$ ls
+bigfile  f1    file.tar  file1  images       names
+desktop  file  file.zip  file2  myscript.sh  newdir
+
+bob@tom:~$ untar -cvf file.tar file
+Command 'untar' not found, did you mean:
+  command 'unrar' from deb unrar-free (1:0.0.2-0.1)
+  command 'unrar' from deb unrar (1:6.1.5-1)
+  command 'unar' from deb unar (1.10.1-2build11)
+
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+bob@tom:~$ tar -xvf file.tar file
+file
+
+here:
+x=extract
+
+zip
+unzip
+tar
+untarA
+
+zip:
+> zip -e passworn.zip f1.txt -- it saved in password folder and ask password to open
+> zip -u file1.zip f2 f3 -- to moves files in file1.zip folder 
+> zip -m file2.zip f4 f5 f6 -- it will removes all files and move into file2.txt
