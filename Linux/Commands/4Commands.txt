@@ -231,3 +231,37 @@ uid=1000(svadlamuri) gid=1000(svadlamuri) groups=1000(svadlamuri),4(adm),20(dial
 13) ssh:
 root@Varma:~/a# whatis ssh
 ssh (1)              - OpenSSH remote login client
+
+14) Yum: 
+Use the yum utility to manage package operations:
+Searching information about packages
+Installing packages
+Updating packages
+Removing packages
+Checking the list of currently available repositories
+Adding or removing a repository
+Enabling or disabling a repository
+
+Installing a package:
+~]# yum install package_name
+Updating all packages and their dependencies:
+~]# yum update
+Updating a package:
+~]# yum update package_name
+Uninstalling a package and any packages that depend on it:
+~]# yum remove package_name
+Listing information on all installed and available packages:
+~]$ yum list all
+Listing information on all installed packages:
+~]$ yum list installed
+Listing all available repositories:
+~]# subscription-manager repos --list
+Listing all currently enabled repositories:
+~]$ yum repolist
+Enabling or disabling a repository:
+~]# subscription-manager repos --enable repository
+~]# subscription-manager repos --disable repository
+Searching for packages matching a specific string:
+~]$ yum search string
+
+15) 
