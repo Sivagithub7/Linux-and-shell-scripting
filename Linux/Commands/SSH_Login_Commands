@@ -1,0 +1,11 @@
+ssh [user_name]@[remote_host]	Connect to a remote host as a user via SSH.
+ssh [host]	Securely connect to a host via SSH default port 22.
+ssh -p [port] [user_name]@[remote_host]	Connect to the host using a particular port.
+ssh-keygen	Generate SSH key pairs.
+sudo service sshd start	Start SSH server daemon.
+scp [file_name] [user_name]@[remote_host]:[remote_path]	Securely copy files between local and remote systems via SSH.
+sftp [user_name]@[remote_host]	Interactive file transfer over encrypted SSH session using SFTP protocol.
+telnet [host]	Connect to the host via Telnet default port 23.
+
+
+ssh balu@176.16.80.1
