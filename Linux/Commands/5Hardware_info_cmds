@@ -1,0 +1,87 @@
+
+1) lscpu ---	See CPU information.
+
+root@Varma:~# lscpu
+Architecture:            x86_64
+  CPU op-mode(s):        32-bit, 64-bit
+  Address sizes:         39 bits physical, 48 bits virtual
+  Byte Order:            Little Endian
+CPU(s):                  4
+  On-line CPU(s) list:   0-3
+Vendor ID:               GenuineIntel
+  Model name:            Intel(R) Core(TM) i3-1005G1 CPU @ 1.20GHz
+    CPU family:          6
+    ..
+    ..
+    ..
+
+2) lsblk ---	See information about block devices.
+
+root@Varma:~# lsblk
+NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda    8:0    0 388.4M  1 disk
+sdb    8:16   0     1G  0 disk [SWAP]
+sdc    8:32   0     1T  0 disk /snap
+                               /mnt/wslg/distro
+                               /
+                               
+3) lspci -tv ---	Show PCI devices (graphics card, network card, etc.) in a tree-like diagram.
+
+root@Varma:~# lspci -tv
+-+-[e750:00]---00.0  Red Hat, Inc. Virtio file system
+ +-[c591:00]---00.0  Microsoft Corporation Device 008e
+ +-[01ad:00]---00.0  Red Hat, Inc. Virtio console
+ \-[0000:00]-
+
+ 
+4) lsusb -tv	--- Display USB devices in a tree-like diagram.
+
+root@Varma:~# lsusb -tv
+/:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=vhci_hcd/8p, 5000M
+    ID 1d6b:0003 Linux Foundation 3.0 root hub
+/:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=vhci_hcd/8p, 480M
+    ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+
+5) lshw	--- List hardware configuration information.
+
+root@Varma:~# lshw
+varma
+    description: Computer
+    width: 64 bits
+    capabilities: smp vsyscall32
+  *-core
+       description: Motherboard
+       physical id: 0
+     *-memory
+          description: System memory
+          physical id: 1
+          size: 4GiB
+     *-cpu
+          product: Intel(R) Core(TM) i3-1005G1 CPU @ 1.20GHz
+          vendor: Intel Corp.
+          physical id: 2
+          bus info: cpu@0
+          version: 6.126.5
+          width: 64 bits
+          ...
+          ...
+
+6) cat /proc/cpuinfo	--- Show detailed CPU information.
+
+root@Varma:~# cat /proc/cpuinfo
+processor       : 0
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 126
+model name      : Intel(R) Core(TM) i3-1005G1 CPU @ 1.20GHz
+stepping        : 5
+microcode       : 0xffffffff
+cpu MHz         : 1190.402
+cache size      : 4096 KB
+physical id     : 0
+...
+...
+
+7) cat /proc/meminfo	--- View detailed system memory information.
+cat /proc/mounts	--- See mounted file systems.
