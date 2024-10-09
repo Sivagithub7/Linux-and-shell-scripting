@@ -1,45 +1,45 @@
 1) soft link: Files that point to a file or directory in your system, but dont mirror the other files data
 
-system@Varma:~$ cat soft1
+system@tom:~$ cat soft1
 cat: soft1: No such file or directory
-system@Varma:~$ cat >soft1
+system@tom:~$ cat >soft1
 one
 two
 three
 ^C
-system@Varma:~$ cat soft1
+system@tom:~$ cat soft1
 one
 two
 three
 
-system@Varma:~$ ln -s soft1 softlink
-system@Varma:~$ cat softlink
+system@tom:~$ ln -s soft1 softlink
+system@tom:~$ cat softlink
 one
 two
 three
 
-system@Varma:~$ rm soft1
+system@tom:~$ rm soft1
 
-system@Varma:~$ cat softlink
+system@tom:~$ cat softlink
 cat: softlink: No such file or directory
 
 
 >>Hard link: acts as acopy(mirrored) of the selected data.
 
-system@Varma:~$ cat>hard
+system@tom:~$ cat>hard
 one
 two
 three
 ^C
-system@Varma:~$ ln hard hardlink
-system@Varma:~$ cat hardlink
+system@tom:~$ ln hard hardlink
+system@tom:~$ cat hardlink
 one
 two
 three
 
-system@Varma:~$ rm hard
+system@tom:~$ rm hard
 
-system@Varma:~$ cat hardlink
+system@tom:~$ cat hardlink
 one
 two
 three
@@ -49,13 +49,13 @@ of a specified file or piped data and print the result to standard output.
 (here -d =deliminator)
 ex:
 
-system@Varma:~$ cat>aaa
+system@tom:~$ cat>aaa
 terraform aws linux
 c c++ java
 python unix cloud
 ^C
 
-system@Varma:~$ cut -d " " -f 1,3 aaa
+system@tom:~$ cut -d " " -f 1,3 aaa
 terraform linux
 c java
 python cloud
@@ -64,7 +64,7 @@ python cloud
 
 ex:
 
-system@Varma:~$ cat aaa
+system@tom:~$ cat aaa
 5
 1
 2
@@ -72,7 +72,7 @@ system@Varma:~$ cat aaa
 8
 9
 6
-system@Varma:~$ sort aaa
+system@tom:~$ sort aaa
 1
 2
 3
@@ -81,7 +81,7 @@ system@Varma:~$ sort aaa
 8
 9
 
-system@Varma:~$ cat>bbb
+system@tom:~$ cat>bbb
 3
 1
 2
@@ -91,7 +91,7 @@ system@Varma:~$ cat>bbb
 7
 4
 ^C
-system@Varma:~$ sort bbb
+system@tom:~$ sort bbb
 1
 2
 3
@@ -100,7 +100,7 @@ system@Varma:~$ sort bbb
 5
 67
 7
-system@Varma:~$ sort -n bbb (-n=numerical)
+system@tom:~$ sort -n bbb (-n=numerical)
 1
 2
 3
@@ -109,7 +109,7 @@ system@Varma:~$ sort -n bbb (-n=numerical)
 7
 49
 67
-system@Varma:~$ sort -nr bbb (r=reverse)
+system@tom:~$ sort -nr bbb (r=reverse)
 67
 49
 7
@@ -118,7 +118,7 @@ system@Varma:~$ sort -nr bbb (r=reverse)
 3
 2
 1
-system@Varma:~$
+system@tom:~$
 
 4) piping (|) : want to display one line particularly
 
@@ -131,7 +131,7 @@ system@Varma:~$
 --* indicates we are not getting any response.
  Traceroute google.com
 traceroute to google.com (172.xxxxxxxxxxxx6), 30 hops max, 60 byte packets
- 1  Varma.mshome.net (17xxxxxxxxx0.440 ms  0.391 ms  0.380 ms
+ 1  tom.mshome.net (17xxxxxxxxx0.440 ms  0.391 ms  0.380 ms
  2  19xxxxxxxxxxx5 (192.168.66.25)  59.444 ms  59.437 ms  59.336 ms
  3  * * *
  4  * * *
@@ -167,6 +167,6 @@ traceroute to google.com (172.xxxxxxxxxxxx6), 30 hops max, 60 byte packets
 
 mtr facebook.com
                                                                          My traceroute  [v0.95]
-Varma (xxxxxxxxxxxx3) -> facebook.com (xxxxxxxxxx35)                                                                                           2023-09-2xxxxxxxxxxxx0
+tom (xxxxxxxxxxxx3) -> facebook.com (xxxxxxxxxx35)                                                                                           2023-09-2xxxxxxxxxxxx0
 Keys:  Help   Display mode   Restart statistics   Order of fields   quit
                                                                                                                                Packets   
