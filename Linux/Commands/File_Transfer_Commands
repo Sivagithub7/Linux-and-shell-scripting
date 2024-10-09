@@ -1,0 +1,37 @@
+1) scp [source_file] [user]@[remote_host]:[destination_path]	-- Copy a file to a server directory securely using the Linux scp command.
+root@tom:~/a# whatis scp
+scp (1)              - OpenSSH secure file copy
+
+scp file_name user@remotehost:/home/user/file_name 
+
+scp test1.txt jerry@170.13.87.1:/home/jerry/test1.txt 
+
+
+2) rsync -a [source_directory] [user]@[remote_host]:[destination_directory]	-- Synchronize the contents of a directory with a backup directory using the rsync command.
+
+3) wget [link]	-- Download files from FTP or web servers via the wget command.
+
+root@tom:~/a# whatis wget
+wget (1)             - The non-interactive network downloader.
+
+--download images through url
+
+feh url..
+image will be display
+
+--if url will long so need to be small 
+wget -O image.png url...
+
+
+4) curl -O [link]	Transfer data to or from a server with various protocols using the curl command.
+
+-- if we want any error o/p from external devices from internet or logs
+> curl "url" grep errors
+
+-- if we want any api 
+> curl -X GET google.com
+
+5) ftp [remote_host]	-- Transfer files between local and remote systems interactively using FTP.
+
+
+6) sftp [user]@[remote_host]	-- Securely transfer between local and remote hosts using SFTP.
