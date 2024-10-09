@@ -1,0 +1,218 @@
+1) id	-- See details about the active users.
+
+bob@LAPTOP-1BR3SJJG:~$ whatis id
+id (1)               - print real and effective user and group IDs
+
+ex:
+
+bob@LAPTOP-1BR3SJJG:~$ id
+uid=1000(bob) gid=1000(bob) groups=1000(bob),4(adm),20(dialout),24(cdrom),25(floppy),
+27(sudo),29(audio),30(dip),44(video),46(plugdev),116(netdev)
+
+
+2) last	-- Show the last system logins.
+
+bob@LAPTOP-1BR3SJJG:~$ whatis last
+last (1)             - show a listing of last logged in users
+
+> last | awk '{print$1}' | sort | uniq
+uniq: same name who is present
+
+
+3) who	-- Display who is currently logged into the system with the who command.
+
+bob@tom:~$ who
+root     pts/1        2024-10-09 14:24
+root     pts/2        2024-10-09 15:25
+
+
+4) w	-- Show which users are logged in and their activity with the w command.
+
+bob@tom:~$ w
+ 17:09:37 up  2:45,  2 users,  load average: 0.12, 0.11, 0.09
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+root     pts/1    -                14:24    2:44m  0.01s  0.00s -bash
+root     pts/2    -                15:25    1.00s 14.09s  0.87s w
+
+
+5) finger [user_name]	-- Show user information.
+
+6) sudo useradd [user_name]	Create a new user account.
+sudo adduser [user_name]	Create a new user account through the adduser command interface.
+sudo userdel [user_name]	Delete a user account.
+sudo usermod -aG [group_name] [user_name]	Modify user information (add a user to a group).
+passwd
+sudo passwd [user_name]	Change the current user's password or another user's password with the passwd command.
+sudo groupadd [group_name]	Add a new group.
+sudo groupdel [group_name]	Delete a group.
+sudo groupmod -n [new_name] [old_name]	Modify a user group (change group name).
+sudo [command]	Temporarily elevate user privileges to superuser or root using the sudo command.
+su - [user_name]	Switch the user account or become a superuser.
+chgrp [group_name] [file/directory]	Change file or directory group.
+
+ex:
+
+> Useradd ( creating user)
+ex:
+bob@tom:~/desktop$ sudo useradd mark -m -s /urs/bin/bash -g users -c "mu comment"
+note:
+mark : user name like bob
+-m : create default home directly
+-s : default shell(user for allowing the user to use shell whatever provide after this flag)
+-g: default user flag
+
+bob@tom:~/desktop$ sudo passwd mark
+New password:
+Retype new password:
+passwd: password updated successfully
+
+bob@tom:~/desktop$ ls /home/
+mark  bob
+
+> USERDEL (removing user)
+
+bob@tom:~/desktop$ ls /home/
+mark  bob
+bob@tom:~/desktop$ sudo userdel mark
+bob@tom:~/desktop$ ls /home/
+mark  bob
+bob@tom:~/desktop$ sudo rm -r /home/mark/
+bob@tom:~/desktop$ ls /home/
+bob
+
+> Basic group management (groups,gropuadd,groupdel)
+bob@tom:~$ groups
+bob adm dialout cdrom floppy sudo audio dip video plugdev netdev
+bob@tom:~$ cat /etc/groups
+cat: /etc/groups: No such file or directory
+bob@tom:~$ cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,bob
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:bob
+fax:x:21:
+voice:x:22:
+cdrom:x:24:bob
+floppy:x:25:bob
+tape:x:26:
+sudo:x:27:bob
+audio:x:29:bob
+dip:x:30:bob
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:bob
+sasl:x:45:
+plugdev:x:46:bob
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+crontab:x:104:
+messagebus:x:105:
+systemd-timesync:x:106:
+input:x:107:
+sgx:x:108:
+kvm:x:109:
+render:x:110:
+syslog:x:111:
+uuidd:x:112:
+tcpdump:x:113:
+_ssh:x:114:
+admin:x:115:
+netdev:x:116:bob
+bob:x:1000:
+
+
+bob@tom:~$ sudo groupadd java
+[sudo] password for bob:
+bob@tom:~$ cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,bob
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:bob
+fax:x:21:
+voice:x:22:
+cdrom:x:24:bob
+floppy:x:25:bob
+tape:x:26:
+sudo:x:27:bob
+audio:x:29:bob
+dip:x:30:bob
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:bob
+sasl:x:45:
+plugdev:x:46:bob
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+crontab:x:104:
+messagebus:x:105:
+systemd-timesync:x:106:
+input:x:107:
+sgx:x:108:
+kvm:x:109:
+render:x:110:
+syslog:x:111:
+uuidd:x:112:
+tcpdump:x:113:
+_ssh:x:114:
+admin:x:115:
+netdev:x:116:bob
+bob:x:1000:
+java:x:1001:
+
+bob@tom:~$ sudo groupdel java
+bob@tom:~$ cat /etc/group
+
+java group deleted
+
+> want to add in any group.
+sudo gpasswd -a root python
+o/p: adding user root to group python
+
+sudo gpasswd -d root python
+o/p: removing user root to group python
