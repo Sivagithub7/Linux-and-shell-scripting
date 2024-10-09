@@ -1,113 +1,113 @@
 1) cat: Create new file and write the content and ctrl+d to save the content into file.
 note: id file is present after we do cat file then it will over ride.
 
-> svadlamuri@Varma:~$ cat > file1
+> bob@tom:~$ cat > file1
 ravi
 suresh
 
-> svadlamuri@Varma:~$ cat file1
+> bob@tom:~$ cat file1
 ravi
 suresh
 
 >overridden happens :
 -------------------
-> svadlamuri@Varma:~$ cat >file1
+> bob@tom:~$ cat >file1
 bob
 smith
 
-> svadlamuri@Varma:~$ cat file1
+> bob@tom:~$ cat file1
 bob
 smith
 
->svadlamuri@Varma:~$ cat >file2
+>bob@tom:~$ cat >file2
 welcome
 
-> svadlamuri@Varma:~$ ls file2
+> bob@tom:~$ ls file2
 file2
 
-> svadlamuri@Varma:~$ cat file2
+> bob@tom:~$ cat file2
 welcome
 
-> svadlamuri@Varma:~$ cat >>file2
+> bob@tom:~$ cat >>file2
 hello
 
-> svadlamuri@Varma:~$ cat file2
+> bob@tom:~$ cat file2
 welcome
 hello
 
-> svadlamuri@Varma:~$ cat -n file2
+> bob@tom:~$ cat -n file2
      1  welcome
      2  hello
 	 
 > concatination:
-svadlamuri@Varma:~$ cat file2 file1>f
-svadlamuri@Varma:~$ cat f
+bob@tom:~$ cat file2 file1>f
+bob@tom:~$ cat f
 welcome
 hello
 ravi
 suresh
 
 > Merge:
-svadlamuri@Varma:~$ cat file1 file2>file merge
-svadlamuri@Varma:~$ cat file
+bob@tom:~$ cat file1 file2>file merge
+bob@tom:~$ cat file
 ravi
 suresh
 welcome
 hello
 
 2)  ls: List the content of directory.
-> svadlamuri@Varma:~$ ls -lrt
+> bob@tom:~$ ls -lrt
 total 16
--rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 17 10:56 file1
--rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:26 f
--rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
--rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file2
+-rw-r--r-- 1 bob bob 12 Jul 17 10:56 file1
+-rw-r--r-- 1 bob bob 27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file2
 
-> svadlamuri@Varma:~$ ls
+> bob@tom:~$ ls
 f  file  file1  file2
 
-> svadlamuri@Varma:~$ ls /
+> bob@tom:~$ ls /
 bin   etc   lib    libx32      mnt   root  snap  tmp
 boot  home  lib32  lost+found  opt   run   srv   usr
 dev   init  lib64  media       proc  sbin  sys   var
 
-> svadlamuri@Varma:~$ ls ../..
+> bob@tom:~$ ls ../..
 bin   etc   lib    libx32      mnt   root  snap  tmp
 boot  home  lib32  lost+found  opt   run   srv   usr
 dev   init  lib64  media       proc  sbin  sys   var
 
-> svadlamuri@Varma:~$ ls -l (long lists and files)
+> bob@tom:~$ ls -l (long lists and files)
 total 16
--rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:26 f
--rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file
--rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 17 10:56 file1
--rw-r--r-- 1 svadlamuri svadlamuri 27 Jul 17 11:27 file2
+-rw-r--r-- 1 bob bob 27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob 12 Jul 17 10:56 file1
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file2
 
-> svadlamuri@Varma:~$ ls -a (hidden lists)
+> bob@tom:~$ ls -a (hidden lists)
 .   .bash_logout  .cache    .motd_shown  f     file1
 ..  .bashrc       .lesshst  .profile     file  file2
 
-> svadlamuri@Varma:~$ ls -al (long list)
+> bob@tom:~$ ls -al (long list)
 total 44
-drwxr-x--- 3 svadlamuri svadlamuri 4096 Jul 17 11:27 .
+drwxr-x--- 3 bob bob 4096 Jul 17 11:27 .
 drwxr-xr-x 3 root       root       4096 Jul 16 20:05 ..
--rw-r--r-- 1 svadlamuri svadlamuri  220 Jul 16 20:05 .bash_logout
--rw-r--r-- 1 svadlamuri svadlamuri 3771 Jul 16 20:05 .bashrc
-drwx------ 2 svadlamuri svadlamuri 4096 Jul 16 20:06 .cache
--rw------- 1 svadlamuri svadlamuri   20 Jul 17 10:30 .lesshst
--rw-r--r-- 1 svadlamuri svadlamuri    0 Jul 16 20:06 .motd_shown
--rw-r--r-- 1 svadlamuri svadlamuri  807 Jul 16 20:05 .profile
--rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:26 f
--rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file
--rw-r--r-- 1 svadlamuri svadlamuri   12 Jul 17 10:56 file1
--rw-r--r-- 1 svadlamuri svadlamuri   27 Jul 17 11:27 file2
+-rw-r--r-- 1 bob bob  220 Jul 16 20:05 .bash_logout
+-rw-r--r-- 1 bob bob 3771 Jul 16 20:05 .bashrc
+drwx------ 2 bob bob 4096 Jul 16 20:06 .cache
+-rw------- 1 bob bob   20 Jul 17 10:30 .lesshst
+-rw-r--r-- 1 bob bob    0 Jul 16 20:06 .motd_shown
+-rw-r--r-- 1 bob bob  807 Jul 16 20:05 .profile
+-rw-r--r-- 1 bob bob   27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob   12 Jul 17 10:56 file1
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file2
 
 ls -l -->shows metadata 
-system@Varma:~/f1$ ls -l
+system@tom:~/f1$ ls -l
 total 0
 -rw-r--r-- 1 system system 0 Aug 26 12:22 file1
 
-ls -l -a -->shows all metadatasystem@Varma:~/f1$ ls -l -a
+ls -l -a -->shows all metadatasystem@tom:~/f1$ ls -l -a
 total 8
 drwxr-xr-x 2 system system 4096 Aug 26 12:22 .
 drwxr-x--- 6 system system 4096 Aug 26 12:21 ..
@@ -117,46 +117,46 @@ drwxr-x--- 6 system system 4096 Aug 26 12:21 ..
 3) Touch: Create empty files and change time stamp of created file.
 note: if file already exists then we create any file with that existing file name Touch can not over ride  it updates time stamp of file 
 
-svadlamuri@Varma:~$ mkdir desktop
-svadlamuri@Varma:~$ ls
+bob@tom:~$ mkdir desktop
+bob@tom:~$ ls
 bigfile  desktop  f1  file  file1  file2  images  names
-svadlamuri@Varma:~$ cd desktop
-svadlamuri@Varma:~/desktop$ touch file1.txt
-svadlamuri@Varma:~/desktop$ cat >file2.txt
+bob@tom:~$ cd desktop
+bob@tom:~/desktop$ touch file1.txt
+bob@tom:~/desktop$ cat >file2.txt
 Balu
 Ramesh
-svadlamuri@Varma:~/desktop$ ls
+bob@tom:~/desktop$ ls
 file1.txt  file2.txt
-svadlamuri@Varma:~/desktop$ ls -lrt
+bob@tom:~/desktop$ ls -lrt
 total 4
--rw-r--r-- 1 svadlamuri svadlamuri  0 Jul 21 10:17 file1.txt
--rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 21 10:17 file2.txt
+-rw-r--r-- 1 bob bob  0 Jul 21 10:17 file1.txt
+-rw-r--r-- 1 bob bob 12 Jul 21 10:17 file2.txt
 
 change time stamp on file1.txt:
 
-svadlamuri@Varma:~/desktop$ touch file1.txt
-svadlamuri@Varma:~/desktop$ ls -lrt
+bob@tom:~/desktop$ touch file1.txt
+bob@tom:~/desktop$ ls -lrt
 total 4
--rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 21 10:17 file2.txt
--rw-r--r-- 1 svadlamuri svadlamuri  0 Jul 21 10:19 file1.txt
+-rw-r--r-- 1 bob bob 12 Jul 21 10:17 file2.txt
+-rw-r--r-- 1 bob bob  0 Jul 21 10:19 file1.txt
 
 Create more files :
 
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ touch abc{1..5}.xml
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -lrt
+bob@LAPTOP-1BR3SJJG:~/file1$ touch abc{1..5}.xml
+bob@LAPTOP-1BR3SJJG:~/file1$ ls -lrt
 total 0
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 21 11:51 f1
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:24 free
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc1.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc2.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc3.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc4.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc5.xml
+-rw-r--r-- 1 bob bob 0 Oct 21 11:51 f1
+-rw-r--r-- 1 bob bob 0 Oct 23 15:24 free
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc1.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc2.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc3.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc4.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc5.xml
 
 4) Nano: 
 
-svadlamuri@Varma:~/desktop$ nano file1.txt
-svadlamuri@Varma:~/desktop$ cat file1.txt
+bob@tom:~/desktop$ nano file1.txt
+bob@tom:~/desktop$ cat file1.txt
 abc
 bcd
 efg
@@ -168,7 +168,7 @@ efg
 
 
 
-> svadlamuri@Varma:~/desktop$ nano abc.cpp ( it identified the c++ extension and others ass well)
+> bob@tom:~/desktop$ nano abc.cpp ( it identified the c++ extension and others ass well)
 
  GNU nano 6.2                 abc.cpp *              
   #include<iostream>
@@ -181,30 +181,30 @@ to save : ctrl+0 to check file name is ok or rename and ctrl+z
 
 5) Sudo:command is used to administation access to another user 
 
-svadlamuri@Varma:~/desktop$ mkdir newdir
-svadlamuri@Varma:~/desktop$ ls
+bob@tom:~/desktop$ mkdir newdir
+bob@tom:~/desktop$ ls
 abc.cpp  file1.txt  file2.txt  newdir
-svadlamuri@Varma:~/desktop$ rmdir newdir
-svadlamuri@Varma:~/desktop$
-svadlamuri@Varma:~/desktop$ ls
+bob@tom:~/desktop$ rmdir newdir
+bob@tom:~/desktop$
+bob@tom:~/desktop$ ls
 abc.cpp  file1.txt  file2.txt
-svadlamuri@Varma:~/desktop$ cd ..
-svadlamuri@Varma:~$ rmdir newdir
+bob@tom:~/desktop$ cd ..
+bob@tom:~$ rmdir newdir
 rmdir: failed to remove 'newdir': No such file or directory
-svadlamuri@Varma:~$ mkdir newdir
-svadlamuri@Varma:~$ ls
+bob@tom:~$ mkdir newdir
+bob@tom:~$ ls
 bigfile  desktop  f1  file  file1  file2  images  names  newdir
-svadlamuri@Varma:~$ sudo newdir
-[sudo] password for svadlamuri:
+bob@tom:~$ sudo newdir
+[sudo] password for bob:
 sudo: newdir: command not found
-svadlamuri@Varma:~$ mkdir newdir
+bob@tom:~$ mkdir newdir
 mkdir: cannot create directory ‘newdir’: File exists
-svadlamuri@Varma:~$ sudo -s
-root@Varma:/home/svadlamuri# exit
+bob@tom:~$ sudo -s
+root@tom:/home/bob# exit
 exit
 
 If we want to download any thing.
-root@Varma:/home/svadlamuri# sudo apt-get install <command to download>
+root@tom:/home/bob# sudo apt-get install <command to download>
 
 6) Top: View active process live with their system usage.
 
@@ -215,28 +215,28 @@ root@Varma:/home/svadlamuri# sudo apt-get install <command to download>
 
 
 7) ECHO: Print any text follows the command /string that is passed an argument.
-svadlamuri@Varma:~$ echo helo world
+bob@tom:~$ echo helo world
 helo world
 
-svadlamuri@Varma:~$ echo "hello world"
+bob@tom:~$ echo "hello world"
 hello world
 
-svadlamuri@Varma:~$ myvar="mark"
-svadlamuri@Varma:~$ echo $myvar
+bob@tom:~$ myvar="mark"
+bob@tom:~$ echo $myvar
 mark
 
-svadlamuri@Varma:~$ x=10
-svadlamuri@Varma:~$ echo "the value of x is $x"
+bob@tom:~$ x=10
+bob@tom:~$ echo "the value of x is $x"
 the value of x is 10
 
-svadlamuri@Varma:~$ echo -e 'some \text'
+bob@tom:~$ echo -e 'some \text'
 some    ext
 
-svadlamuri@Varma:~$ echo -e 'some \n text'
+bob@tom:~$ echo -e 'some \n text'
 some
  text
  
-svadlamuri@Varma:~$ echo -e 'some \ntext'
+bob@tom:~$ echo -e 'some \ntext'
 some
 text
 
@@ -260,79 +260,79 @@ There are 3 redirects in Linux
 • E.g.
 > STDUOUT:(-1)
 
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l
+bob@LAPTOP-1BR3SJJG:~/file1$ ls -l
 total 0
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc1.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc2.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc3.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc4.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc5.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 21 11:51 f1
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:24 free
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l>mydir
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat mydir
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc1.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc2.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc3.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc4.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc5.xml
+-rw-r--r-- 1 bob bob 0 Oct 21 11:51 f1
+-rw-r--r-- 1 bob bob 0 Oct 23 15:24 free
+bob@LAPTOP-1BR3SJJG:~/file1$ ls -l>mydir
+bob@LAPTOP-1BR3SJJG:~/file1$ cat mydir
 total 0
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc1.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc2.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc3.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc4.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:47 abc5.xml
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 21 11:51 f1
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 23 15:24 free
--rw-r--r-- 1 svadlamuri svadlamuri 0 Oct 24 10:44 mydir
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc1.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc2.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc3.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc4.xml
+-rw-r--r-- 1 bob bob 0 Oct 23 15:47 abc5.xml
+-rw-r--r-- 1 bob bob 0 Oct 21 11:51 f1
+-rw-r--r-- 1 bob bob 0 Oct 23 15:24 free
+-rw-r--r-- 1 bob bob 0 Oct 24 10:44 mydir
+bob@LAPTOP-1BR3SJJG:~/file1$ ls -l
 total 0
--rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc1.xml
--rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc2.xml
--rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc3.xml
--rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc4.xml
--rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:47 abc5.xml
--rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 21 11:51 f1
--rw-r--r-- 1 svadlamuri svadlamuri   0 Oct 23 15:24 free
--rw-r--r-- 1 svadlamuri svadlamuri 467 Oct 24 10:44 mydir
+-rw-r--r-- 1 bob bob   0 Oct 23 15:47 abc1.xml
+-rw-r--r-- 1 bob bob   0 Oct 23 15:47 abc2.xml
+-rw-r--r-- 1 bob bob   0 Oct 23 15:47 abc3.xml
+-rw-r--r-- 1 bob bob   0 Oct 23 15:47 abc4.xml
+-rw-r--r-- 1 bob bob   0 Oct 23 15:47 abc5.xml
+-rw-r--r-- 1 bob bob   0 Oct 21 11:51 f1
+-rw-r--r-- 1 bob bob   0 Oct 23 15:24 free
+-rw-r--r-- 1 bob bob 467 Oct 24 10:44 mydir
 
 ex:
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat > f2
+bob@LAPTOP-1BR3SJJG:~/file1$ cat > f2
 hello
 ^C
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "world" >> f2
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat f2
+bob@LAPTOP-1BR3SJJG:~/file1$ echo "world" >> f2
+bob@LAPTOP-1BR3SJJG:~/file1$ cat f2
 hello
 world
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat "person" >> f2
+bob@LAPTOP-1BR3SJJG:~/file1$ cat "person" >> f2
 cat: person: No such file or directory
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat "f2" >> person
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat f2
+bob@LAPTOP-1BR3SJJG:~/file1$ cat "f2" >> person
+bob@LAPTOP-1BR3SJJG:~/file1$ cat f2
 hello
 world
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "person" >> f2
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat f2
+bob@LAPTOP-1BR3SJJG:~/file1$ echo "person" >> f2
+bob@LAPTOP-1BR3SJJG:~/file1$ cat f2
 hello
 world
 person
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ echo "men" > f2
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat f2
+bob@LAPTOP-1BR3SJJG:~/file1$ echo "men" > f2
+bob@LAPTOP-1BR3SJJG:~/file1$ cat f2
 men
 
 > stdin:(-0)
 
 ex: 
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat < f2
+bob@LAPTOP-1BR3SJJG:~/file1$ cat < f2
 men
 
 > stderr:(2>)
 
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l /root
+bob@LAPTOP-1BR3SJJG:~/file1$ ls -l /root
 ls: cannot open directory '/root': Permission denied
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ ls -l /root 2> errorfile
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ telnet localhost
+bob@LAPTOP-1BR3SJJG:~/file1$ ls -l /root 2> errorfile
+bob@LAPTOP-1BR3SJJG:~/file1$ telnet localhost
 Trying 127.0.0.1...
 telnet: Unable to connect to remote host: Connection refused
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ telnet localhost 2> errorfile
+bob@LAPTOP-1BR3SJJG:~/file1$ telnet localhost 2> errorfile
 Trying 127.0.0.1...
 
 note: error goes to
-svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat errorfile
+bob@LAPTOP-1BR3SJJG:~/file1$ cat errorfile
 telnet: Unable to connect to remote host: Connection refused
 
 
