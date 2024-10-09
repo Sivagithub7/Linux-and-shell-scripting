@@ -1,0 +1,8 @@
+1) sudo apt-get install [package_name]	-- Install an APT package using the apt-get package utility.
+sudo apt install [package_name]	-- Install an APT package using a newer APT package manager.
+apt search [keyword]	Search for a package in the APT repositories.
+apt list	List packages installed with APT.
+apt show [package_name]	Show information about a package.
+sudo dpkg -i [package_name.deb]	Install a .deb package with the Debian package manager (dpkg command).
+sudo dpkg -l	List packages installed with dpkg.
+
