@@ -161,7 +161,7 @@ M-x means “press and release the Escape key and then press the x key. “
 C-x means “press and hold the Control key and then press and release the x key.”
 
 
-8)sed:refer pdf
+8) sed:
 note if we dont use -i then it will disply the o/p in screen but actual o/p cant change.
 ex:
 svadlamuri@LAPTOP-1BR3SJJG:~/file1$ cat ss
@@ -227,3 +227,7 @@ ex:
 svadlamuri@LAPTOP-1BR3SJJG:~$ id
 uid=1000(svadlamuri) gid=1000(svadlamuri) groups=1000(svadlamuri),4(adm),20(dialout),24(cdrom),25(floppy),
 27(sudo),29(audio),30(dip),44(video),46(plugdev),116(netdev)
+
+13) ssh:
+root@Varma:~/a# whatis ssh
+ssh (1)              - OpenSSH remote login client
