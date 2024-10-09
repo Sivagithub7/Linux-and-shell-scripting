@@ -1,0 +1,6 @@
+sudo yum install [package_name]	-- Install a package using the YUM package manager.
+yum search [keyword]	-- Find a package in the YUM repositories based on the provided keyword.
+yum list installed	--- List all packages installed with YUM.
+yum info [package_name]	-- Show package information for a package.
+sudo dnf install [package_name]	-- Install a package using the DNF package manager.
+sudo rpm -i [package_name.rpm]	-- Install a .rpm package from a local file.
