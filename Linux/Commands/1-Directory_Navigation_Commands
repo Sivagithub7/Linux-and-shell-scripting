@@ -1,0 +1,77 @@
+1) ls	-- List files and directories in the current directory.
+ls -a	List all files and directories in the current directory (shows hidden files).
+ls -l	List files and directories in long format.
+
+> bob@tom:~$ ls -lrt
+total 16
+-rw-r--r-- 1 bob bob 12 Jul 17 10:56 file1
+-rw-r--r-- 1 bob bob 27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file2
+
+> bob@tom:~$ ls
+f  file  file1  file2
+
+> bob@tom:~$ ls /
+bin   etc   lib    libx32      mnt   root  snap  tmp
+boot  home  lib32  lost+found  opt   run   srv   usr
+dev   init  lib64  media       proc  sbin  sys   var
+
+> bob@tom:~$ ls ../..
+bin   etc   lib    libx32      mnt   root  snap  tmp
+boot  home  lib32  lost+found  opt   run   srv   usr
+dev   init  lib64  media       proc  sbin  sys   var
+
+> bob@tom:~$ ls -l (long lists and files)
+total 16
+-rw-r--r-- 1 bob bob 27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob 12 Jul 17 10:56 file1
+-rw-r--r-- 1 bob bob 27 Jul 17 11:27 file2
+
+> bob@tom:~$ ls -a (hidden lists)
+.   .bash_logout  .cache    .motd_shown  f     file1
+..  .bashrc       .lesshst  .profile     file  file2
+
+> bob@tom:~$ ls -al (long list)
+total 44
+drwxr-x--- 3 bob bob 4096 Jul 17 11:27 .
+drwxr-xr-x 3 root       root       4096 Jul 16 20:05 ..
+-rw-r--r-- 1 bob bob  220 Jul 16 20:05 .bash_logout
+-rw-r--r-- 1 bob bob 3771 Jul 16 20:05 .bashrc
+drwx------ 2 bob bob 4096 Jul 16 20:06 .cache
+-rw------- 1 bob bob   20 Jul 17 10:30 .lesshst
+-rw-r--r-- 1 bob bob    0 Jul 16 20:06 .motd_shown
+-rw-r--r-- 1 bob bob  807 Jul 16 20:05 .profile
+-rw-r--r-- 1 bob bob   27 Jul 17 11:26 f
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file
+-rw-r--r-- 1 bob bob   12 Jul 17 10:56 file1
+-rw-r--r-- 1 bob bob   27 Jul 17 11:27 file2
+
+ls -l -->shows metadata 
+system@tom:~/f1$ ls -l
+total 0
+-rw-r--r-- 1 system system 0 Aug 26 12:22 file1
+
+ls -l -a -->shows all metadatasystem@tom:~/f1$ ls -l -a
+total 8
+drwxr-xr-x 2 system system 4096 Aug 26 12:22 .
+drwxr-x--- 6 system system 4096 Aug 26 12:21 ..
+-rw-r--r-- 1 system system    0 Aug 26 12:22 file1
+
+
+2) pwd	Show the directory you are currently working in.
+1) PWD : present working directory.
+> bob@tom:~$ pwd
+/home/bob
+
+
+3) cd
+cd ~	-- Change directory to $HOME.
+cd ..	-- Move up one directory level.
+cd -	-- Change to the previous directory.
+cd [directory_path]	-- Change location to a specified directory.
+dirs	-- Show current directory stack.
+
+> cd <filename>
+( cd .. --> one step back)
