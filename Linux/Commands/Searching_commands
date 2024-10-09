@@ -1,0 +1,129 @@
+1) find [path] -name [search_pattern]	-- Find files and directories that match the specified pattern in a specified location.
+
+~# pwd
+/root
+
+~# ls
+a  at  crontab  nohup.out  snap
+
+~# cd a
+
+~/a# ls
+cccc  read  shellfirst  variable
+
+~/a# cd ..
+
+~# find /root/a -name cccc
+/root/a/cccc
+
+or 
+
+~# find / -name cccc  (/ -- everything)
+Permission denied
+so add sudo
+~# sudo find / -name cccc  
+
+find [path] -size [+100M]	-- See files and directories larger than a specified size in a directory.
+
+
+2) grep [search_pattern] [file_name]	-- Search for a specific pattern in a file with grep.
+
+~$ ls
+bigfile  f1    file.tar  file1  images       names
+desktop  file  file.zip  file2  myscript.sh  newdir
+
+~$ grep "hello" file
+hello
+
+grep -r [search_pattern] [directory_name]	Recursively search for a pattern in a directory.
+
+
+
+3) locate [name]	-- Locate all files and directories related to a particular name.
+
+
+4) which [command]	-- Search the command path in the $PATH environment variable.
+-- Which command is used to return a path name of file or command
+
+~/desktop$ which ls
+/usr/bin/ls
+
+~/desktop$ which bash
+/usr/bin/bash
+
+
+5) whereis [command]	-- Use the whereis command to find the source, binary, and manual page for a command.
+
+~$ whereis ls
+ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz
+
+
+6) awk '[search_pattern] {print $0}' [file_name]	
+-- awk is a utility/language designed for data extraction. Most of the time it is used to extract fields from a file or from an output
+
+:~/file1$ cat > test
+vai bye
+chai swai
+mai kai
+sai tai
+^C
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ awk '{print $1}' test
+vai
+chai
+mai
+sai
+svadlamuri@LAPTOP-1BR3SJJG:~/file1$ awk '{print $2}' test
+bye
+swai
+kai
+tai
+
+
+7) sed 's/[old_text]/[new_text]/' [file_name]	-- Find and replace text in a specified file.
+note if we dont use -i then it will disply the o/p in screen but actual o/p cant change.
+
+~/file1$ cat ss
+kenny val
+benny vall
+
+~/file1$ sed -i 's/kenny/lenny/g' ss
+
+~/file1$ cat ss
+lenny val
+benny vall
+
+note: -i = insert
+g= global
+s= substitute
+
+> completely remove then we use 
+
+~/file1$ cat sss
+ball doll
+cat bat
+toy boy
+toll doll
+
+~/file1$ sed -i 's/doll//g' sss
+
+~/file1$ cat sss
+ball
+cat bat
+toy boy
+toll
+
+to delete lines:
+
+~/file1$ cat sss
+ball
+cat bat
+toy boy
+toll
+call bat
+
+~/file1$ sed -i '/bat/d' sss
+
+~/file1$ cat sss
+ball
+toy boy
+toll.
