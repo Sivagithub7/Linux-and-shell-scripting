@@ -617,6 +617,16 @@ svadlamuri@Varma:~$ date +%T (time as hh:mm:ss)
 svadlamuri@Varma:~$ date +%H,+%M,%S
 11,+01,29
 
+To display the current date and local time, type the following at a shell prompt:
+~]$ date
+Mon Sep 16 17:30:24 CEST 2016
+To display the current date and time in UTC, type the following at a shell prompt:
+~]$ date --utc
+Mon Sep 16 15:30:34 UTC 2016
+To customize the output of the date command, type:
+~]$ date +"%Y-%m-%d %H:%M"
+2016-09-16 17:30
+
 18) How to run multiple terminal commands at a time
 svadlamuri@Varma:~$ pwd;date
 /home/svadlamuri
