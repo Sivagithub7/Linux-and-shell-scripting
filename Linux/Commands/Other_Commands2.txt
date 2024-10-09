@@ -1,0 +1,157 @@
+
+1) NANO:
+svadlamuri@Varma:~/desktop$ nano myscript.sh
+
+ GNU nano 6.2               myscript.sh *                       #!/usr/bin/bash
+ls  -l
+STRING="hello world"
+echo  $STRING
+
+
+
+
+^G Help      ^O Write Out ^W Where Is  ^K Cut       ^T Execute
+^X Exit      ^R Read File ^\ Replace   ^U Paste     ^J Justify
+
+svadlamuri@Varma:~/desktop$ ./myscript.sh
+total 16
+-rw-r--r-- 1 svadlamuri svadlamuri 19 Jul 21 10:33 abc.cpp
+-rw-r--r-- 1 svadlamuri svadlamuri 15 Jul 21 10:31 file1.txt
+-rw-r--r-- 1 svadlamuri svadlamuri 12 Jul 21 10:17 file2.txt
+-rwxr-xr-x 1 svadlamuri svadlamuri 60 Jul 25 10:52 myscript.sh
+hello world
+
+
+2) What: Display the short manual page description
+eg:
+svadlamuri@Varma:~/desktop$ whatis grep
+grep (1)             - print lines that match pattern
+
+
+3) .bashrc file:The .bashrc file is a script file that’s executed when a user logs in. The file itself contains a series of configurations for the terminal session. This includes setting up or enabling: coloring, completion, shell history, command aliases, and more.
+
+It is a hidden file and simple ls command won’t show the file.
+> ls -a
+---
+----
+
+> nano .bashrc
+> gedit.bashrc
+
+
+4) watch: which can run scripts command at regular interval or repetedely.
+svadlamuri@Varma:~$ watch free -m
+Every 2.0s: free -m               Varma: Wed Jul 26 10:04:46 2023
+               total        used        free      shared  buff/cache   available
+Mem:            3802         470        2657           3
+674        3124
+Swap:           1024           0        1024
+
+ctrl+c -- to Exit
+
+Too change 2 sec to 1 sec
+svadlamuri@Varma:~$ watch -n 1 free -m
+Every 1.0s: free -m               Varma: Wed Jul 26 10:06:47 2023
+               total        used        free      shared  buff/cache   available
+Mem:            3802         470        2658           3
+674        3125
+Swap:           1024           0        1024
+
+
+5) cal:
+cal
+o/p: jan 2023
+su mo tue wed ..
+.	.
+.	.
+
+ncal
+jan2023
+mon  2  9   ...
+ .
+ .
+ 
+ cal 2 2023
+ feb
+ 
+ cal -3: gives previous month and this month and next month
+ex: dec,jan,feb
+
+cal -l
+current month
+
+6) date:
+svadlamuri@Varma:~$ date
+Wed Jul 26 10:55:14 IST 2023
+svadlamuri@Varma:~$ date +%d%h%y
+26Jul23
+
+note:
++%m: specifies the month number
+svadlamuri@Varma:~$ date +%m
+07
+
++%h: specifies abbrivated month(jan-dec)
+svadlamuri@Varma:~$ date +%h
+Jul
+
+svadlamuri@Varma:~$ date +%B
+July
+
+svadlamuri@Varma:~$ date +%d (day of month)
+26
+
+svadlamuri@Varma:~$ date +%y (year)
+23
+
+svadlamuri@Varma:~$ date +%D (date as mm/yy)
+07/26/23
+
+svadlamuri@Varma:~$ date +%T (time as hh:mm:ss)
+10:59:31
+
+svadlamuri@Varma:~$ date +%H,+%M,%S
+11,+01,29
+
+7) How to run multiple terminal commands at a time
+svadlamuri@Varma:~$ pwd;date
+/home/svadlamuri
+Wed Jul 26 11:06:22 IST 2023
+
+svadlamuri@Varma:~$ pwd&&date
+/home/svadlamuri
+Wed Jul 26 11:06:31 IST 2023
+
+svadlamuri@Varma:~$ ls || pwd
+bigfile  f1    file1  images       names
+desktop  file  file2  myscript.sh  newdir
+
+svadlamuri@Varma:~$ ls || pw
+bigfile  f1    file1  images       names
+desktop  file  file2  myscript.sh  newdir
+
+svadlamuri@Varma:~$ l || pwd
+bigfile   f1     file1  images/      names/
+desktop/  file*  file2  myscript.sh  newdir/
+
+svadlamuri@Varma:~$ l && pwd
+bigfile   f1     file1  images/      names/
+desktop/  file*  file2  myscript.sh  newdir/
+/home/svadlamuri
+
+svadlamuri@Varma:~$ l and pwd
+ls: cannot access 'and': No such file or directory
+ls: cannot access 'pwd': No such file or directory
+
+	   
+8) nl:
+root@Varma:~/a# whatis nl
+nl (1)               - number lines of files
+
+ex: 1 and
+    2 am
+    ...
+like this numbers will display.
+
+
+
