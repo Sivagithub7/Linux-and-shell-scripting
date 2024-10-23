@@ -1,4 +1,4 @@
-1) ip addr-- show	List IP addresses and network interfaces.
+jk1) ip addr-- show	List IP addresses and network interfaces.
 
 ip address add [IP_address]	Assign an IP address to interface eth0.
 
@@ -105,7 +105,7 @@ host (1)             - DNS lookup utility
 A DNS lookup, or DNS record lookup, is the process through which human-readable domain names (www.digicert.com) are translated into a computer-readable IP address (216.168. 246.55).
 
 root@tom:~/a# host gmail.com
-gmail.com has address 142.250.193.197
+gmail.com has address 142.xxxxxxxx
 gmail.com has IPv6 address 2xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 gmail.com mail is handled by xxxxx.gmail-smtp-in.l.google.com.
 gmail.com mail is handled by 5 gmail-smtp-in.l.google.com.
