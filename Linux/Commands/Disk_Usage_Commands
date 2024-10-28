@@ -7,6 +7,7 @@ df -i	Show free inodes on mounted file systems.
 du -sh	Show disk usage of the current directory.
 
 4) mount	-- Show currently mounted file systems.
+ mounting is the process of attaching a file system to a specific directory in the file system hierarchy. This makes the files and directories of the mounted device accessible to the user and the system
 
 root@tom:~# mount
 none on /usr/lib/modules/5.15.153.1-microsoft-standard-WSL2 type overlay (rw,xxxx,nodev,noatime,lowerdir=/modules,upperdir=/lib/modules/5.15.153.1-microsoft-standard-xxxxx/rw/upper,workdir=/lib/modules/5.15.153.1-microsoft-standard-WSL2/rw/xxxxx)
