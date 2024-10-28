@@ -7,6 +7,7 @@ df -i	Show free inodes on mounted file systems.
 du -sh	Show disk usage of the current directory.
 
 4) mount	-- Show currently mounted file systems.
+The mount command instructs the operating system to attach a file system at a specified directory. You can mount a file or directory if you have access to the file or directory being mounted and write permission for the mount point.
  mounting is the process of attaching a file system to a specific directory in the file system hierarchy. This makes the files and directories of the mounted device accessible to the user and the system
 
 root@tom:~# mount
